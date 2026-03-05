@@ -133,7 +133,7 @@ body {
     transition: background 0.2s;
 }
 
-/* 5. VIDEO & CARD PAGE LAYOUT (SHRINK-WRAP) */
+/* 5. VIDEO & CARD PAGE LAYOUT */
 .video-container {
     display: table;
     width: auto;
@@ -154,7 +154,7 @@ video, .card-frame img {
     margin-top: 25px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px; /* Increased vertical spacing */
 }
 
 .control-btn {
@@ -172,7 +172,7 @@ video, .card-frame img {
 /* 6. ABOUT PAGE STYLES */
 .about-content {
     width: 100%;
-    text-align: justify; /* Kept for Desktop */
+    text-align: justify;
     text-justify: inter-word;
     margin-bottom: 50px;
 }
@@ -183,12 +183,7 @@ video, .card-frame img {
     line-height: 1.5;
 }
 
-.about-content a {
-    color: var(--white) !important;
-    text-decoration: underline;
-}
-
-/* Typography styles for Oblique Alphabet bolding */
+.about-content a { color: var(--white) !important; text-decoration: underline; }
 .light-text { font-family: 'PP Neue Machina Light', sans-serif; font-weight: 300; }
 .bold-text { font-family: 'PP Neue Machina', sans-serif; font-weight: bold; }
 .small-text { font-size: 0.75rem !important; margin-top: 50px; }
@@ -204,24 +199,10 @@ video, .card-frame img {
     text-transform: uppercase;
 }
 
-/* 8. MOBILE RESPONSIVE (FIXED SPACING) */
+/* 8. MOBILE RESPONSIVE */
 @media (max-width: 768px) {
-    .alphabet-grid { 
-        grid-template-columns: repeat(3, 1fr); 
-    }
-    
-    .btn-box { 
-        height: 70px; 
-        font-size: 0.9rem;
-    }
-
-    .full-width-btn {
-        height: 56px; 
-        font-size: 1.1rem;
-    }
-
-    /* Fix for weird spacing on mobile */
-    .about-content {
-        text-align: left; 
-    }
+    .alphabet-grid { grid-template-columns: repeat(3, 1fr); }
+    .btn-box { height: 70px; font-size: 0.9rem; }
+    .full-width-btn { height: 56px; font-size: 1.1rem; }
+    .about-content { text-align: left; }
 }
