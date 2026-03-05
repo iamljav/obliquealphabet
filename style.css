@@ -78,7 +78,7 @@ body {
 
 .full-width-btn {
     width: 100%;
-    height: 28px; /* Desktop Height */
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -101,7 +101,7 @@ body {
     color: var(--bg-blue);
     border: none;
     flex: 1;
-    height: 35px; /* Desktop Height */
+    height: 35px;
     font-family: 'PP Neue Machina', sans-serif;
     font-weight: bold;
     font-size: 0.8rem;
@@ -133,11 +133,9 @@ body {
     transition: background 0.2s;
 }
 
-.letter-link:hover { background: var(--hover-grey); }
-
 /* 5. VIDEO & CARD PAGE LAYOUT (SHRINK-WRAP) */
 .video-container {
-    display: table; /* Forces container to exactly match video width */
+    display: table;
     width: auto;
     max-width: 95%;
     margin: 0 auto;
@@ -168,19 +166,19 @@ video, .card-frame img {
     font-size: 0.8rem;
     cursor: pointer;
     text-transform: uppercase;
-    width: 100%; /* Perfectly aligns with video edges */
+    width: 100%;
 }
 
 /* 6. ABOUT PAGE STYLES */
 .about-content {
     width: 100%;
-    text-align: justify;
+    text-align: justify; /* Kept for Desktop */
     text-justify: inter-word;
     margin-bottom: 50px;
 }
 
 .about-content p {
-    text-transform: none !important; /* Forces normal case for prose */
+    text-transform: none !important;
     margin-bottom: 1.2rem;
     line-height: 1.5;
 }
@@ -190,11 +188,12 @@ video, .card-frame img {
     text-decoration: underline;
 }
 
+/* Typography styles for Oblique Alphabet bolding */
 .light-text { font-family: 'PP Neue Machina Light', sans-serif; font-weight: 300; }
 .bold-text { font-family: 'PP Neue Machina', sans-serif; font-weight: bold; }
 .small-text { font-size: 0.75rem !important; margin-top: 50px; }
 
-/* 7. FOOTER & NAVIGATION COLOR LOCK */
+/* 7. FOOTER & NAVIGATION */
 .about-nav { padding: 60px 0; }
 .back-link, .back-link:visited { 
     color: var(--white) !important; 
@@ -205,19 +204,24 @@ video, .card-frame img {
     text-transform: uppercase;
 }
 
-/* 8. MOBILE RESPONSIVE (DOUBLED HEIGHTS) */
+/* 8. MOBILE RESPONSIVE (FIXED SPACING) */
 @media (max-width: 768px) {
     .alphabet-grid { 
         grid-template-columns: repeat(3, 1fr); 
     }
     
     .btn-box { 
-        height: 70px; /* Doubled on mobile */
+        height: 70px; 
         font-size: 0.9rem;
     }
 
     .full-width-btn {
-        height: 56px; /* Doubled on mobile */
+        height: 56px; 
         font-size: 1.1rem;
+    }
+
+    /* Fix for weird spacing on mobile */
+    .about-content {
+        text-align: left; 
     }
 }
