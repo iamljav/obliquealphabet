@@ -20,12 +20,15 @@
     <main class="center-content">
         <div class="video-container">
             
-            <video id="letterVideo" autoplay loop muted playsinline>
+            <video id="letterVideo" autoplay muted playsinline>
                 <source src="a.mp4" type="video/mp4">
             </video>
 
             <div class="bottom-interface">
                 <button id="soundToggle" class="control-btn" onclick="toggleSound()">SOUND ON</button>
+                
+                <button class="control-btn" onclick="replayVideo()">REPLAY THE VIDEO</button>
+                
                 <button class="control-btn" onclick="randomVideo()">ANOTHER RANDOM VIDEO</button>
             </div>
             
