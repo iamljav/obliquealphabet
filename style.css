@@ -1,29 +1,10 @@
 /* 1. FONT DECLARATIONS */
-@font-face {
-    font-family: 'PP Neue Machina';
-    src: url('fonts/NeueMachina-Bold.otf') format('opentype');
-    font-weight: bold;
-}
-
-@font-face {
-    font-family: 'PP Neue Machina Light';
-    src: url('fonts/NeueMachina-Light.otf') format('opentype');
-    font-weight: 300;
-}
+@font-face { font-family: 'PP Neue Machina'; src: url('fonts/NeueMachina-Bold.otf') format('opentype'); font-weight: bold; }
+@font-face { font-family: 'PP Neue Machina Light'; src: url('fonts/NeueMachina-Light.otf') format('opentype'); font-weight: 300; }
 
 /* 2. BASE STYLES */
-:root {
-    --bg-blue: #0034CE;
-    --white: #FFFFFF;
-    --hover-grey: #B5B4B4;
-    --container-width: 600px;
-}
-
-* { 
-    box-sizing: border-box; 
-    margin: 0; 
-    padding: 0; 
-}
+:root { --bg-blue: #0034CE; --white: #FFFFFF; --hover-grey: #B5B4B4; --container-width: 600px; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     background-color: var(--bg-blue);
@@ -39,114 +20,35 @@ body {
 }
 
 /* 3. HEADER/LOGO */
-.main-header {
-    width: 95%;
-    max-width: var(--container-width);
-    margin: 40px 0 50px 0;
-}
-
-.logo {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    font-size: clamp(1.5rem, 7vw, 3.5rem);
-    font-weight: bold;
-    line-height: 1;
-}
-
-.subtitle {
-    font-family: 'PP Neue Machina Light', sans-serif;
-    font-size: clamp(0.7rem, 2vw, 1.2rem);
-    margin-top: 15px;
-    letter-spacing: 0.05em;
-    text-transform: lowercase;
-}
+.main-header { width: 95%; max-width: var(--container-width); margin: 40px 0 50px 0; }
+.logo { display: flex; justify-content: space-between; width: 100%; font-size: clamp(1.5rem, 7vw, 3.5rem); font-weight: bold; line-height: 1; }
+.subtitle { font-family: 'PP Neue Machina Light', sans-serif; font-size: clamp(0.7rem, 2vw, 1.2rem); margin-top: 15px; text-transform: lowercase; }
 
 /* 4. HOMEPAGE GRID & BUTTONS */
-.center-content {
-    width: 95%;
-    max-width: var(--container-width);
+.center-content { width: 95%; max-width: var(--container-width); display: flex; flex-direction: column; align-items: center; }
+.intro-action { width: 100%; margin-bottom: 15px; }
+.full-width-btn { width: 100%; height: 28px; display: flex; align-items: center; justify-content: center; text-decoration: none; background: var(--white); color: var(--bg-blue); font-weight: bold; }
+.random-actions { display: flex; justify-content: space-between; width: 100%; gap: 15px; margin-bottom: 30px; }
+.btn-box { background: var(--white); color: var(--bg-blue); border: none; flex: 1; height: 35px; font-weight: bold; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.alphabet-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; width: 100%; margin-bottom: 50px; }
+.letter-link { background: var(--white); color: var(--bg-blue); text-decoration: none; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.5rem; }
+
+/* 5. VIDEO & CARD PAGE LAYOUT (FIXED PROPORTIONS) */
+.video-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.intro-action {
     width: 100%;
-    margin-bottom: 15px;
-}
-
-.full-width-btn {
-    width: 100%;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    background: var(--white);
-    color: var(--bg-blue);
-    font-weight: bold;
-}
-
-.random-actions {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.btn-box {
-    background: var(--white);
-    color: var(--bg-blue);
-    border: none;
-    flex: 1;
-    height: 35px;
-    font-family: 'PP Neue Machina', sans-serif;
-    font-weight: bold;
-    font-size: 0.8rem;
-    cursor: pointer;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.alphabet-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 12px;
-    width: 100%;
-    margin-bottom: 50px;
-}
-
-.letter-link {
-    background: var(--white);
-    color: var(--bg-blue);
-    text-decoration: none;
-    aspect-ratio: 1 / 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1.5rem;
-    transition: background 0.2s;
-}
-
-/* 5. VIDEO & CARD PAGE LAYOUT */
-.video-container {
-    display: table;
-    width: auto;
-    max-width: 95%;
-    margin: 0 auto;
+    max-width: var(--container-width);
 }
 
 video, .card-frame img {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     height: auto;
     max-height: 60vh;
     display: block;
-    margin: 0 auto;
+    object-fit: contain; /* Prevents deformation */
 }
 
 .bottom-interface {
@@ -154,7 +56,7 @@ video, .card-frame img {
     margin-top: 25px;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Increased vertical spacing */
+    gap: 20px; /* Vertical spacing */
 }
 
 .control-btn {
@@ -170,19 +72,8 @@ video, .card-frame img {
 }
 
 /* 6. ABOUT PAGE STYLES */
-.about-content {
-    width: 100%;
-    text-align: justify;
-    text-justify: inter-word;
-    margin-bottom: 50px;
-}
-
-.about-content p {
-    text-transform: none !important;
-    margin-bottom: 1.2rem;
-    line-height: 1.5;
-}
-
+.about-content { width: 100%; text-align: justify; text-justify: inter-word; margin-bottom: 50px; }
+.about-content p { text-transform: none !important; margin-bottom: 1.2rem; line-height: 1.5; }
 .about-content a { color: var(--white) !important; text-decoration: underline; }
 .light-text { font-family: 'PP Neue Machina Light', sans-serif; font-weight: 300; }
 .bold-text { font-family: 'PP Neue Machina', sans-serif; font-weight: bold; }
@@ -190,14 +81,7 @@ video, .card-frame img {
 
 /* 7. FOOTER & NAVIGATION */
 .about-nav { padding: 60px 0; }
-.back-link, .back-link:visited { 
-    color: var(--white) !important; 
-    text-decoration: none; 
-    font-weight: bold; 
-    font-size: 1.1rem; 
-    border-bottom: 1px solid var(--white); 
-    text-transform: uppercase;
-}
+.back-link, .back-link:visited { color: var(--white) !important; text-decoration: none; font-weight: bold; font-size: 1.1rem; border-bottom: 1px solid var(--white); text-transform: uppercase; }
 
 /* 8. MOBILE RESPONSIVE */
 @media (max-width: 768px) {
@@ -205,4 +89,8 @@ video, .card-frame img {
     .btn-box { height: 70px; font-size: 0.9rem; }
     .full-width-btn { height: 56px; font-size: 1.1rem; }
     .about-content { text-align: left; }
+    
+    /* Ensure cards/videos don't stretch beyond viewport */
+    video, .card-frame img { width: 100%; max-width: 90vw; }
+    .bottom-interface { width: 90vw; }
 }
