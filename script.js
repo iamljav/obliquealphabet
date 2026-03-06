@@ -19,6 +19,7 @@ function randomCard() {
     const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
     const randomLetter = letters[Math.floor(Math.random() * letters.length)];
     
+    // Logic for randomized card navigation
     const isInsideAssets = window.location.pathname.includes('assets');
     const prefix = isInsideAssets ? '../cards/' : 'assets/cards/';
     
@@ -43,7 +44,7 @@ function toggleSound() {
 
 /**
  * Resets the video to the beginning and plays it.
- * This supports the "REPLAY THE VIDEO" button requirement.
+ * Supports the "REPLAY THE VIDEO" button requirement.
  */
 function replayVideo() {
     const video = document.getElementById('letterVideo');
