@@ -1,7 +1,6 @@
 /* 1. FONT DECLARATIONS */
 @font-face {
     font-family: 'LEIXO';
-    /* File extension and name must match exactly: LEIXO.ttf */
     src: url('fonts/LEIXO.ttf') format('truetype'); 
     font-weight: normal;
     font-style: normal;
@@ -15,13 +14,14 @@
 
 @font-face {
     font-family: 'PP Neue Machina Light';
+    /* Path and filename must match your fonts folder exactly */
     src: url('fonts/NeueMachina-Light.otf') format('opentype');
     font-weight: 300;
 }
 
 /* 2. BASE STYLES */
 :root {
-    --bg-black: #242424; /* Final black color */
+    --bg-black: #242424; 
     --white: #FFFFFF;
     --hover-grey: #B5B4B4;
     --container-width: 600px;
@@ -46,7 +46,7 @@ body {
     overflow-x: hidden;
 }
 
-/* 3. HEADER/LOGO - FORCED LEIXO */
+/* 3. HEADER/LOGO */
 .main-header {
     width: 95%;
     max-width: var(--container-width);
@@ -68,7 +68,7 @@ body {
     font-size: clamp(0.7rem, 2vw, 1.2rem);
     margin-top: 15px;
     letter-spacing: 0.05em;
-    text-transform: lowercase;
+    text-transform: lowercase; /* Kept per instruction */
 }
 
 /* 4. HOMEPAGE GRID & BUTTONS */
@@ -80,11 +80,6 @@ body {
     align-items: center;
 }
 
-.intro-action {
-    width: 100%;
-    margin-bottom: 15px;
-}
-
 .full-width-btn {
     width: 100%;
     height: 28px;
@@ -93,21 +88,12 @@ body {
     justify-content: center;
     text-decoration: none;
     background: var(--white);
-    color: var(--bg-black); /* Text matches background */
-    font-weight: bold;
-}
-
-.random-actions {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    gap: 15px;
-    margin-bottom: 30px;
+    color: var(--bg-black);
 }
 
 .btn-box {
     background: var(--white);
-    color: var(--bg-black); /* Text matches background */
+    color: var(--bg-black);
     border: none;
     flex: 1;
     height: 35px;
@@ -115,7 +101,6 @@ body {
     font-weight: bold;
     font-size: 0.8rem;
     cursor: pointer;
-    text-transform: uppercase;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -129,24 +114,19 @@ body {
     margin-bottom: 50px;
 }
 
-/* Grid Letters - FORCED LEIXO */
 .letter-link {
     background: var(--white);
-    color: var(--bg-black); /* Text matches background */
+    color: var(--bg-black);
     text-decoration: none;
     aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'LEIXO', sans-serif !important;
-    font-weight: normal;
     font-size: 1.5rem;
-    transition: background 0.2s;
 }
 
-.letter-link:hover { background: var(--hover-grey); }
-
-/* 5. VIDEO & CARD PAGE LAYOUT (FIXED PROPORTIONS) */
+/* 5. VIDEO & CARD PAGE LAYOUT */
 .video-container {
     display: flex;
     flex-direction: column;
@@ -161,7 +141,7 @@ video, .card-frame img {
     height: auto;
     max-height: 60vh;
     display: block;
-    object-fit: contain; /* Fixes deformation */
+    object-fit: contain;
 }
 
 .bottom-interface {
@@ -169,7 +149,7 @@ video, .card-frame img {
     margin-top: 25px;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Increased spacing */
+    gap: 20px;
 }
 
 .control-btn {
@@ -180,22 +160,24 @@ video, .card-frame img {
     font-family: 'PP Neue Machina Light', sans-serif;
     font-size: 0.8rem;
     cursor: pointer;
-    text-transform: uppercase;
     width: 100%;
 }
 
-/* 6. ABOUT PAGE STYLES */
+/* 6. ABOUT PAGE STYLES - UPDATED TO LIGHT */
 .about-content {
     width: 100%;
     text-align: justify;
     text-justify: inter-word;
     margin-bottom: 50px;
+    /* Forces the lighter font for all text in this container */
+    font-family: 'PP Neue Machina Light', sans-serif !important;
 }
 
 .about-content p {
     text-transform: none !important;
     margin-bottom: 1.2rem;
     line-height: 1.5;
+    font-weight: 300;
 }
 
 .about-content a {
@@ -203,42 +185,30 @@ video, .card-frame img {
     text-decoration: underline;
 }
 
-.light-text { font-family: 'PP Neue Machina Light', sans-serif; font-weight: 300; }
-.bold-text { font-family: 'PP Neue Machina', sans-serif; font-weight: bold; }
+/* Specific highlight logic from previous edit */
+.bold-text { 
+    font-family: 'PP Neue Machina', sans-serif !important; 
+    font-weight: bold; 
+}
+
 .small-text { font-size: 0.75rem !important; margin-top: 50px; }
 
 /* 7. FOOTER & NAVIGATION */
 .about-nav { padding: 60px 0; }
-.back-link, .back-link:visited { 
+.back-link { 
     color: var(--white) !important; 
     text-decoration: none; 
     font-weight: bold; 
-    font-size: 1.1rem; 
     border-bottom: 1px solid var(--white); 
-    text-transform: uppercase;
 }
 
 /* 8. MOBILE RESPONSIVE */
 @media (max-width: 768px) {
-    .alphabet-grid { 
-        grid-template-columns: repeat(3, 1fr); 
-    }
+    .alphabet-grid { grid-template-columns: repeat(3, 1fr); }
+    .btn-box { height: 70px; font-size: 0.9rem; }
+    .full-width-btn { height: 56px; font-size: 1.1rem; }
+    .about-content { text-align: left; }
     
-    .btn-box { 
-        height: 70px; /* Doubled height */
-        font-size: 0.9rem;
-    }
-
-    .full-width-btn {
-        height: 56px; /* Doubled height */
-        font-size: 1.1rem;
-    }
-
-    .about-content {
-        text-align: left; /* Fixes spacing weirdness */
-    }
-    
-    /* Ensure cards/videos don't stretch beyond viewport */
     video, .card-frame img { width: 100%; max-width: 90vw; }
     .bottom-interface { width: 90vw; }
 }
