@@ -1,5 +1,13 @@
 /* 1. FONT DECLARATIONS */
 @font-face {
+    font-family: 'LEIXO';
+    /* File extension and name must match exactly: LEIXO.ttf */
+    src: url('fonts/LEIXO.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'PP Neue Machina';
     src: url('fonts/NeueMachina-Bold.otf') format('opentype');
     font-weight: bold;
@@ -13,7 +21,7 @@
 
 /* 2. BASE STYLES */
 :root {
-    --bg-black: #242424; 
+    --bg-black: #242424; /* Final black color */
     --white: #FFFFFF;
     --hover-grey: #B5B4B4;
     --container-width: 600px;
@@ -38,7 +46,7 @@ body {
     overflow-x: hidden;
 }
 
-/* 3. HEADER/LOGO */
+/* 3. HEADER/LOGO - FORCED LEIXO */
 .main-header {
     width: 95%;
     max-width: var(--container-width);
@@ -49,8 +57,9 @@ body {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    font-family: 'LEIXO', sans-serif !important; 
     font-size: clamp(1.5rem, 7vw, 3.5rem);
-    font-weight: bold;
+    font-weight: normal; 
     line-height: 1;
 }
 
@@ -84,7 +93,7 @@ body {
     justify-content: center;
     text-decoration: none;
     background: var(--white);
-    color: var(--bg-black); /* Updated from blue to #242424 */
+    color: var(--bg-black); /* Text matches background */
     font-weight: bold;
 }
 
@@ -98,7 +107,7 @@ body {
 
 .btn-box {
     background: var(--white);
-    color: var(--bg-black); /* Updated from blue to #242424 */
+    color: var(--bg-black); /* Text matches background */
     border: none;
     flex: 1;
     height: 35px;
@@ -120,22 +129,24 @@ body {
     margin-bottom: 50px;
 }
 
+/* Grid Letters - FORCED LEIXO */
 .letter-link {
     background: var(--white);
-    color: var(--bg-black); /* Updated from blue to #242424 */
+    color: var(--bg-black); /* Text matches background */
     text-decoration: none;
     aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
+    font-family: 'LEIXO', sans-serif !important;
+    font-weight: normal;
     font-size: 1.5rem;
     transition: background 0.2s;
 }
 
 .letter-link:hover { background: var(--hover-grey); }
 
-/* 5. VIDEO & CARD PAGE LAYOUT */
+/* 5. VIDEO & CARD PAGE LAYOUT (FIXED PROPORTIONS) */
 .video-container {
     display: flex;
     flex-direction: column;
@@ -150,7 +161,7 @@ video, .card-frame img {
     height: auto;
     max-height: 60vh;
     display: block;
-    object-fit: contain;
+    object-fit: contain; /* Fixes deformation */
 }
 
 .bottom-interface {
@@ -158,7 +169,7 @@ video, .card-frame img {
     margin-top: 25px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 20px; /* Increased spacing */
 }
 
 .control-btn {
@@ -214,19 +225,20 @@ video, .card-frame img {
     }
     
     .btn-box { 
-        height: 70px; 
+        height: 70px; /* Doubled height */
         font-size: 0.9rem;
     }
 
     .full-width-btn {
-        height: 56px; 
+        height: 56px; /* Doubled height */
         font-size: 1.1rem;
     }
 
     .about-content {
-        text-align: left; 
+        text-align: left; /* Fixes spacing weirdness */
     }
     
+    /* Ensure cards/videos don't stretch beyond viewport */
     video, .card-frame img { width: 100%; max-width: 90vw; }
     .bottom-interface { width: 90vw; }
 }
