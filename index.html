@@ -40,7 +40,12 @@
             color: inherit;
             text-decoration: none;
         }
-        .logo span.space { width: 0.3em; }
+
+        /* SPACE FIX: Forces a gap between words in space-between layout */
+        .logo span.space { 
+            display: inline-block;
+            width: 4vw; 
+        }
 
         .subtitle {
             font-family: 'NeueMachina-Bold', sans-serif;
@@ -110,6 +115,7 @@
             .main-header, .content-width { padding: 0 15px; }
             .alphabet-grid { grid-template-columns: repeat(4, 1fr); }
             .utility-row { grid-template-columns: 1fr; }
+            .logo span.space { width: 5vw; }
         }
     </style>
 </head>
@@ -123,14 +129,14 @@
                 <span>A</span><span>L</span><span>P</span><span>H</span><span>A</span><span>B</span><span>E</span><span>T</span>
             </a>
         </h1>
-        <p class="subtitle">an alphabet of control and resistance</p>
+        <p class="subtitle">an alphabet of control and creation</p>
     </header>
 
     <div class="content-width">
         <nav class="utility-row">
-            <a href="template.html?letter=intro&mode=video" class="utility-btn">WATCH THE INTRO</a>
-            <button class="utility-btn" onclick="window.location.href='template.html?letter=' + String.fromCharCode(97 + Math.floor(Math.random() * 26)) + '&mode=video'">PICK A VIDEO</button>
-            <button class="utility-btn" onclick="window.location.href='template.html?letter=' + String.fromCharCode(97 + Math.floor(Math.random() * 26)) + '&mode=card'">PICK A CARD</button>
+            <a href="template.html?letter=intro&mode=video" class="utility-btn">WATCH THE INTRODUCTION</a>
+            <button class="utility-btn" onclick="window.location.href='template.html?letter=' + String.fromCharCode(97 + Math.floor(Math.random() * 26)) + '&mode=video'">PICK A RANDOM VIDEO</button>
+            <button class="utility-btn" onclick="window.location.href='template.html?letter=' + String.fromCharCode(97 + Math.floor(Math.random() * 26)) + '&mode=card'">PICK A RANDOM CARD</button>
         </nav>
 
         <main id="alphabet-grid" class="alphabet-grid"></main>
