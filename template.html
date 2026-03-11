@@ -28,7 +28,6 @@
         .main-header { padding-top: 60px; }
 
         .logo { margin: 0; width: 100%; }
-        
         .logo a {
             font-family: 'LEIXO', sans-serif;
             font-size: clamp(24px, 8.5vw, 54px);
@@ -40,7 +39,6 @@
             color: inherit;
             text-decoration: none;
         }
-
         .logo span.space { width: 0.3em; }
 
         .media-container {
@@ -60,15 +58,15 @@
             display: block;
         }
 
-        /* DYNAMIC INTERFACE BOX */
+        /* FLEXIBLE BUTTON CONTAINER */
         .bottom-interface {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Default 2x2 */
+            grid-template-columns: 1fr 1fr;
             gap: 12px;
             margin: 40px auto 80px;
         }
 
-        /* CLASS TO SWITCH TO 3-BUTTON LAYOUT */
+        /* 3-BUTTON LAYOUT OVERRIDE */
         .bottom-interface.three-buttons {
             display: flex;
             justify-content: space-between;
@@ -176,7 +174,7 @@
         }
 
         function setupIntroButtons() {
-            btn1.innerText = "SOUND ON";
+            btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF";
             btn1.onclick = () => {
                 video.muted = !video.muted;
                 btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF";
@@ -197,25 +195,18 @@
                     video.muted = !video.muted; 
                     btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF"; 
                 };
-                
                 btn2.innerText = "ANOTHER RANDOM VIDEO";
                 btn2.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=video`; };
-
                 btn3.innerText = "VIEW CARD VERSION";
                 btn3.onclick = () => { window.location.href = `template.html?letter=${letter}&mode=card`; };
-
                 btn4.innerText = "BACK TO ALPHABET";
                 btn4.onclick = () => { window.location.href = "index.html"; };
             } else {
-                // CARD MODE - 3 BUTTONS
                 btn1.classList.add('hidden');
-                
                 btn2.innerText = "ANOTHER RANDOM CARD";
                 btn2.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=card`; };
-
                 btn3.innerText = "VIEW VIDEO VERSION";
                 btn3.onclick = () => { window.location.href = `template.html?letter=${letter}&mode=video`; };
-
                 btn4.innerText = "BACK TO ALPHABET";
                 btn4.onclick = () => { window.location.href = "index.html"; };
             }
