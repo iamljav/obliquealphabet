@@ -36,16 +36,19 @@
             max-width: 600px;
         }
 
-        /* LOGO: SINGLE LINE MOBILE FIX */
+        /* LOGO: SINGLE LINE FLEX FIX */
         .logo {
             font-family: 'LEIXO', sans-serif;
             font-size: clamp(24px, 8.5vw, 54px);
             text-transform: uppercase;
-            letter-spacing: 2px;
             margin: 0;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
             white-space: nowrap;
-            display: block;
         }
+
+        .logo span.space { width: 0.3em; }
 
         .subtitle {
             font-family: 'NeueMachina-Bold', sans-serif;
@@ -65,7 +68,6 @@
             text-align: left; 
         }
 
-        /* LIGHT WEIGHT BODY TEXT */
         .content-container p {
             font-family: 'NeueMachina-Regular', sans-serif;
             margin-bottom: 25px;
@@ -75,7 +77,11 @@
             opacity: 0.9;
         }
 
-        /* BOLD TEXT OVERRIDES */
+        /* TIGHT BLOCK FIX */
+        .no-margin {
+            margin-bottom: 0 !important;
+        }
+
         strong, .bold-text {
             font-family: 'NeueMachina-Bold', sans-serif;
         }
@@ -129,8 +135,12 @@
 <body>
 
     <header class="main-header">
-        <h1 class="logo">OBLIQUE ALPHABET</h1>
-        <p class="subtitle">an alphabet of control and resistance</p>
+        <h1 class="logo">
+            <span>O</span><span>B</span><span>L</span><span>I</span><span>Q</span><span>U</span><span>E</span>
+            <span class="space"></span>
+            <span>A</span><span>L</span><span>P</span><span>H</span><span>A</span><span>B</span><span>E</span><span>T</span>
+        </h1>
+        <p class="subtitle">an alphabet of control and creation</p>
     </header>
 
     <main class="content-container">
@@ -151,14 +161,14 @@
             Each film ends with an oblique instruction — a deviation.
         </p>
 
-        <p class="no-gap">Technology produces patterns.</p>
-<p><strong>Oblique Alphabet</strong> introduces disruptions.</p>
-        
+        <p class="no-margin">Technology produces patterns.</p>
+        <p><strong>Oblique Alphabet</strong> introduces disruptions.</p>
+
         <p>Use it to produce your own differences.</p>
 
         <p class="small-text">
-            <strong>OBLIQUE ALPHABET</strong> — AN ALPHABET OF CONTROL AND RESISTANCE IS AN IDEA BY 
-            <a href="https://www.instagram.com/iamljav/" target="_blank"><strong>LJAV</strong></a> EXECUTED THROUGH SEVERAL GEN AI PLATFORMS.
+            <strong>Oblique Alphabet</strong> — AN ALPHABET OF CONTROL AND CREATION HAS BEEN CONCEIVED AND EXECUTED BY 
+            <a href="https://www.instagram.com/iamljav/" target="_blank"><strong>LJAV</strong></a>
         </p>
     </main>
 
