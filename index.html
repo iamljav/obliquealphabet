@@ -35,12 +35,11 @@
         /* 2. LOGO: SINGLE LINE MOBILE FIX */
         .logo {
             font-family: 'LEIXO', sans-serif;
-            /* clamp(min, preferred, max) ensures it stays on one line */
             font-size: clamp(24px, 8.5vw, 54px);
             text-transform: uppercase;
             letter-spacing: 2px;
             margin: 0;
-            white-space: nowrap; /* Forces one line */
+            white-space: nowrap; 
             display: block;
         }
 
@@ -138,7 +137,6 @@
         /* 7. MOBILE RESPONSIVENESS */
         @media (max-width: 600px) {
             .alphabet-grid { grid-template-columns: repeat(4, 1fr); }
-            /* Stack utility buttons on very small phones if needed */
             @media (max-width: 400px) {
                 .utility-row { grid-template-columns: 1fr; }
             }
