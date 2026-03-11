@@ -6,7 +6,6 @@
     <title>OBLIQUE ALPHABET | HOME</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* FONT SETUP */
         @font-face {
             font-family: 'LEIXO';
             src: url('fonts/LEIXO.ttf') format('truetype');
@@ -26,30 +25,35 @@
             text-align: center;
         }
 
-        /* SYNCED WIDTH FOR ALL CONTAINERS */
+        /* MASTER ALIGNMENT CONTAINER */
         .main-header, .content-width {
             width: 100%;
-            max-width: 600px; /* The master width */
-            padding: 0 20px;   /* The master padding */
+            max-width: 600px; 
+            padding: 0; /* Removed side padding to ensure edge-to-edge alignment */
             box-sizing: border-box;
         }
 
         .main-header {
             padding-top: 80px;
             padding-bottom: 20px;
+            margin: 0 auto;
         }
 
-        /* LOGO: JUSTIFIED TO EDGES */
+        /* FLEX LOGO FOR PERFECT EDGE ALIGNMENT */
         .logo {
             font-family: 'LEIXO', sans-serif;
-            font-size: clamp(24px, 8.8vw, 54px);
+            font-size: clamp(24px, 8.5vw, 54px);
             text-transform: uppercase;
-            letter-spacing: 2.2px; /* Precision adjustment for edge-to-edge alignment */
             margin: 0;
-            white-space: nowrap; 
-            display: block;
+            display: flex;
+            justify-content: space-between; /* This pushes letters to the absolute edges */
             width: 100%;
-            text-align: justify; /* Helps with edge alignment in some browsers */
+            white-space: nowrap;
+        }
+
+        /* Ensuring space between OBLIQUE and ALPHABET */
+        .logo span.space {
+            width: 0.3em; 
         }
 
         .subtitle {
@@ -57,16 +61,20 @@
             font-size: 12px;
             text-transform: uppercase;
             opacity: 0.8;
-            margin-top: 15px;
+            margin-top: 25px;
             letter-spacing: 2px;
+            display: block;
         }
 
-        /* TOP UTILITY ROW */
+        .content-width {
+            margin: 0 auto;
+        }
+
         .utility-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
-            margin: 40px auto 20px;
+            margin: 40px 0 20px;
         }
 
         .utility-btn {
@@ -77,20 +85,12 @@
             font-family: 'NeueMachina-Bold', sans-serif;
             font-size: 10px;
             text-transform: uppercase;
-            text-decoration: none;
             cursor: pointer;
-            transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .utility-btn:hover {
-            background-color: white;
-            color: black;
-        }
-
-        /* ALPHABET GRID */
         .alphabet-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr); 
@@ -108,12 +108,6 @@
             text-decoration: none;
             font-size: 24px;
             font-family: 'LEIXO', sans-serif;
-            transition: transform 0.1s ease;
-        }
-
-        .letter-link:hover {
-            background-color: #eee;
-            transform: scale(1.05);
         }
 
         .main-footer {
@@ -124,26 +118,26 @@
         .about-link {
             font-family: 'NeueMachina-Bold', sans-serif;
             color: white;
-            text-decoration: none;
             font-size: 12px;
             text-transform: uppercase;
             border-bottom: 1px solid rgba(255,255,255,0.3);
             padding-bottom: 2px;
         }
 
-        /* MOBILE RESPONSIVENESS */
         @media (max-width: 600px) {
+            .main-header, .content-width { padding: 0 15px; }
             .alphabet-grid { grid-template-columns: repeat(4, 1fr); }
-            @media (max-width: 400px) {
-                .utility-row { grid-template-columns: 1fr; }
-            }
         }
     </style>
 </head>
 <body>
 
     <header class="main-header">
-        <h1 class="logo">OBLIQUE ALPHABET</h1>
+        <h1 class="logo">
+            <span>O</span><span>B</span><span>L</span><span>I</span><span>Q</span><span>U</span><span>E</span>
+            <span class="space"></span>
+            <span>A</span><span>L</span><span>P</span><span>H</span><span>A</span><span>B</span><span>E</span><span>T</span>
+        </h1>
         <p class="subtitle">an alphabet of control and creation</p>
     </header>
 
