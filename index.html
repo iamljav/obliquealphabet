@@ -6,14 +6,18 @@
     <title>OBLIQUE ALPHABET | HOME</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* FONT SETUP */
         @font-face {
             font-family: 'LEIXO';
             src: url('fonts/LEIXO.ttf') format('truetype');
         }
+        @font-face {
+            font-family: 'NeueMachina-Bold';
+            src: url('fonts/NeueMachina-Bold.otf') format('opentype');
+        }
 
         body {
             background-color: #1a1a1a;
-            font-family: 'LEIXO', sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -27,6 +31,7 @@
         }
 
         .logo {
+            font-family: 'LEIXO', sans-serif;
             font-size: 54px;
             text-transform: uppercase;
             letter-spacing: 4px;
@@ -34,20 +39,27 @@
         }
 
         .subtitle {
-            font-size: 14px;
+            font-family: 'NeueMachina-Bold', sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
             opacity: 0.8;
-            margin-top: 10px;
+            margin-top: 15px;
+            letter-spacing: 2px;
         }
 
-        /* 1. THE TOP UTILITY ROW */
+        /* WIDER CONTAINER TO MATCH TITLE */
+        .content-width {
+            width: 100%;
+            max-width: 600px; /* Increased to align with the logo width */
+            padding: 0 20px;
+        }
+
+        /* TOP UTILITY ROW */
         .utility-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
-            width: 100%;
-            max-width: 450px;
             margin: 40px auto 20px;
-            padding: 0 20px;
         }
 
         .utility-btn {
@@ -55,7 +67,7 @@
             border: 1px solid white;
             color: white;
             padding: 15px 5px;
-            font-family: 'LEIXO', sans-serif;
+            font-family: 'NeueMachina-Bold', sans-serif; /* Switched to Machina Bold */
             font-size: 10px;
             text-transform: uppercase;
             text-decoration: none;
@@ -71,13 +83,7 @@
             color: black;
         }
 
-        /* 2. THE ALPHABET GRID */
-        .grid-container {
-            width: 100%;
-            max-width: 450px;
-            padding: 0 20px;
-        }
-
+        /* ALPHABET GRID */
         .alphabet-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr); 
@@ -93,7 +99,7 @@
             color: black;
             text-decoration: none;
             font-size: 24px;
-            font-family: 'LEIXO', sans-serif;
+            font-family: 'LEIXO', sans-serif; /* Letters stay LEIXO */
             transition: transform 0.1s ease;
         }
 
@@ -107,10 +113,9 @@
             padding-bottom: 60px;
         }
 
-        @media (max-width: 450px) {
-            .alphabet-grid { grid-template-columns: repeat(4, 1fr); }
-            .utility-row { grid-template-columns: 1fr; } /* Stack on tiny phones */
+        @media (max-width: 600px) {
             .logo { font-size: 38px; }
+            .alphabet-grid { grid-template-columns: repeat(4, 1fr); }
         }
     </style>
 </head>
@@ -118,21 +123,22 @@
 
     <header class="main-header">
         <h1 class="logo">OBLIQUE ALPHABET</h1>
-        <p class="subtitle">an alphabet of control and creation</p>
+        <p class="subtitle">an alphabet of control and resistance</p>
     </header>
 
-    <nav class="utility-row">
-        <a href="about.html" class="utility-btn">INTRODUCTION</a>
-        <button class="utility-btn" onclick="getRandom('video')">PICK A RANDOM VIDEO</button>
-        <button class="utility-btn" onclick="getRandom('card')">PICK A RANDOM CARD</button>
-    </nav>
+    <div class="content-width">
+        <nav class="utility-row">
+            <a href="about.html" class="utility-btn">INTRODUCTION</a>
+            <button class="utility-btn" onclick="getRandom('video')">PICK A RANDOM VIDEO</button>
+            <button class="utility-btn" onclick="getRandom('card')">PICK A RANDOM CARD</button>
+        </nav>
 
-    <main class="grid-container">
-        <nav id="alphabet-grid" class="alphabet-grid"></nav>
-    </main>
+        <main class="grid-container">
+            <nav id="alphabet-grid" class="alphabet-grid"></nav>
+        </main>
+    </div>
 
-    <footer class="main-footer">
-        </footer>
+    <footer class="main-footer"></footer>
 
     <script src="script.js"></script>
     <script>
