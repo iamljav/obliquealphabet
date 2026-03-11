@@ -6,14 +6,8 @@
     <title>OBLIQUE ALPHABET | HOME</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        @font-face {
-            font-family: 'LEIXO';
-            src: url('fonts/LEIXO.ttf') format('truetype');
-        }
-        @font-face {
-            font-family: 'NeueMachina-Bold';
-            src: url('fonts/NeueMachina-Bold.otf') format('opentype');
-        }
+        @font-face { font-family: 'LEIXO'; src: url('fonts/LEIXO.ttf') format('truetype'); }
+        @font-face { font-family: 'NeueMachina-Bold'; src: url('fonts/NeueMachina-Bold.otf') format('opentype'); }
 
         body {
             background-color: #1a1a1a;
@@ -25,36 +19,28 @@
             text-align: center;
         }
 
-        /* MASTER ALIGNMENT CONTAINER */
         .main-header, .content-width {
             width: 100%;
-            max-width: 600px; 
-            padding: 0; /* Removed side padding to ensure edge-to-edge alignment */
+            max-width: 600px;
+            padding: 0;
             box-sizing: border-box;
         }
 
-        .main-header {
-            padding-top: 80px;
-            padding-bottom: 20px;
-            margin: 0 auto;
-        }
+        .main-header { padding-top: 80px; padding-bottom: 20px; }
 
-        /* FLEX LOGO FOR PERFECT EDGE ALIGNMENT */
-        .logo {
+        .logo { margin: 0; width: 100%; }
+        .logo a {
             font-family: 'LEIXO', sans-serif;
             font-size: clamp(24px, 8.5vw, 54px);
             text-transform: uppercase;
-            margin: 0;
             display: flex;
-            justify-content: space-between; /* This pushes letters to the absolute edges */
+            justify-content: space-between;
             width: 100%;
             white-space: nowrap;
+            color: inherit;
+            text-decoration: none;
         }
-
-        /* Ensuring space between OBLIQUE and ALPHABET */
-        .logo span.space {
-            width: 0.3em; 
-        }
+        .logo span.space { width: 0.3em; }
 
         .subtitle {
             font-family: 'NeueMachina-Bold', sans-serif;
@@ -63,11 +49,6 @@
             opacity: 0.8;
             margin-top: 25px;
             letter-spacing: 2px;
-            display: block;
-        }
-
-        .content-width {
-            margin: 0 auto;
         }
 
         .utility-row {
@@ -85,11 +66,15 @@
             font-family: 'NeueMachina-Bold', sans-serif;
             font-size: 10px;
             text-transform: uppercase;
+            text-decoration: none;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.2s ease;
         }
+
+        .utility-btn:hover { background-color: white; color: black; }
 
         .alphabet-grid {
             display: grid;
@@ -110,14 +95,11 @@
             font-family: 'LEIXO', sans-serif;
         }
 
-        .main-footer {
-            margin-top: 60px;
-            padding-bottom: 80px;
-        }
-
+        .main-footer { margin-top: 60px; padding-bottom: 80px; }
         .about-link {
             font-family: 'NeueMachina-Bold', sans-serif;
             color: white;
+            text-decoration: none;
             font-size: 12px;
             text-transform: uppercase;
             border-bottom: 1px solid rgba(255,255,255,0.3);
@@ -127,6 +109,7 @@
         @media (max-width: 600px) {
             .main-header, .content-width { padding: 0 15px; }
             .alphabet-grid { grid-template-columns: repeat(4, 1fr); }
+            .utility-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -134,30 +117,29 @@
 
     <header class="main-header">
         <h1 class="logo">
-            <span>O</span><span>B</span><span>L</span><span>I</span><span>Q</span><span>U</span><span>E</span>
-            <span class="space"></span>
-            <span>A</span><span>L</span><span>P</span><span>H</span><span>A</span><span>B</span><span>E</span><span>T</span>
+            <a href="index.html">
+                <span>O</span><span>B</span><span>L</span><span>I</span><span>Q</span><span>U</span><span>E</span>
+                <span class="space"></span>
+                <span>A</span><span>L</span><span>P</span><span>H</span><span>A</span><span>B</span><span>E</span><span>T</span>
+            </a>
         </h1>
         <p class="subtitle">an alphabet of control and resistance</p>
     </header>
 
     <div class="content-width">
         <nav class="utility-row">
-            <a href="template.html?letter=intro&mode=video" class="utility-btn">INTRODUCTION</a>
-            <button class="utility-btn" onclick="getRandom('video')">PICK A RANDOM VIDEO</button>
-            <button class="utility-btn" onclick="getRandom('card')">PICK A RANDOM CARD</button>
+            <a href="template.html?letter=intro&mode=video" class="utility-btn">WATCH THE INTRO</a>
+            <button class="utility-btn" onclick="window.location.href='template.html?letter=' + String.fromCharCode(97 + Math.floor(Math.random() * 26)) + '&mode=video'">PICK A VIDEO</button>
+            <button class="utility-btn" onclick="window.location.href='template.html?letter=' + String.fromCharCode(97 + Math.floor(Math.random() * 26)) + '&mode=card'">PICK A CARD</button>
         </nav>
 
-        <main class="grid-container">
-            <nav id="alphabet-grid" class="alphabet-grid"></nav>
-        </main>
+        <main id="alphabet-grid" class="alphabet-grid"></main>
 
         <footer class="main-footer">
             <a href="about.html" class="about-link">ABOUT THE ALPHABET</a>
         </footer>
     </div>
 
-    <script src="script.js"></script>
     <script>
         const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
         const grid = document.getElementById('alphabet-grid');
