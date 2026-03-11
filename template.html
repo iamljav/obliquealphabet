@@ -60,11 +60,24 @@
             display: block;
         }
 
+        /* DYNAMIC INTERFACE BOX */
         .bottom-interface {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr; /* Default 2x2 */
             gap: 12px;
             margin: 40px auto 80px;
+        }
+
+        /* CLASS TO SWITCH TO 3-BUTTON LAYOUT */
+        .bottom-interface.three-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .bottom-interface.three-buttons .control-btn {
+            flex: 1;
+            aspect-ratio: auto;
+            height: 50px;
         }
 
         .control-btn {
@@ -88,6 +101,7 @@
 
         @media (max-width: 600px) {
             .main-header, .bottom-interface, .media-container { padding: 0 15px; }
+            .bottom-interface.three-buttons { flex-direction: column; }
         }
     </style>
 </head>
@@ -111,7 +125,7 @@
             <img id="letterCard" class="hidden" src="" alt="Strategy Card">
         </div>
 
-        <div class="bottom-interface">
+        <div id="controls" class="bottom-interface">
             <button id="btn-1" class="control-btn"></button>
             <button id="btn-2" class="control-btn"></button>
             <button id="btn-3" class="control-btn"></button>
@@ -124,10 +138,11 @@
         const letter = urlParams.get('letter') || 'a';
         const mode = urlParams.get('mode') || 'video';
 
-        const btn1 = document.getElementById('btn-1'); // Top Left
-        const btn2 = document.getElementById('btn-2'); // Top Right
-        const btn3 = document.getElementById('btn-3'); // Bottom Left
-        const btn4 = document.getElementById('btn-4'); // Bottom Right
+        const controls = document.getElementById('controls');
+        const btn1 = document.getElementById('btn-1');
+        const btn2 = document.getElementById('btn-2');
+        const btn3 = document.getElementById('btn-3');
+        const btn4 = document.getElementById('btn-4');
 
         const video = document.getElementById('letterVideo');
         const img = document.getElementById('letterCard');
@@ -149,10 +164,12 @@
                     img.classList.add('hidden');
                     document.getElementById('videoSource').src = `assets/videos/${letter}.mp4`;
                     video.load();
+                    controls.classList.remove('three-buttons');
                 } else {
                     img.classList.remove('hidden');
                     video.classList.add('hidden');
                     img.src = `assets/cards/${letter}.png`;
+                    controls.classList.add('three-buttons');
                 }
                 setupStandardButtons();
             }
@@ -164,19 +181,15 @@
                 video.muted = !video.muted;
                 btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF";
             };
-
             btn2.innerText = "PICK A RANDOM CARD";
             btn2.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=card`; };
-
             btn3.innerText = "PICK A RANDOM VIDEO";
             btn3.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=video`; };
-
             btn4.innerText = "BACK TO ALPHABET";
             btn4.onclick = () => { window.location.href = "index.html"; };
         }
 
         function setupStandardButtons() {
-            // Button 1: Sound Toggle (Hide if in card mode)
             if (mode === 'video') {
                 btn1.classList.remove('hidden');
                 btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF";
@@ -184,28 +197,28 @@
                     video.muted = !video.muted; 
                     btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF"; 
                 };
+                
+                btn2.innerText = "ANOTHER RANDOM VIDEO";
+                btn2.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=video`; };
+
+                btn3.innerText = "VIEW CARD VERSION";
+                btn3.onclick = () => { window.location.href = `template.html?letter=${letter}&mode=card`; };
+
+                btn4.innerText = "BACK TO ALPHABET";
+                btn4.onclick = () => { window.location.href = "index.html"; };
             } else {
-                // If Card mode, maybe use this for "View Video Version" instead of Button 3?
-                // For now, let's keep it simple and hide it or repurpose it.
-                btn1.innerText = "SOUND N/A";
-                btn1.style.opacity = "0.3";
-                btn1.style.pointerEvents = "none";
+                // CARD MODE - 3 BUTTONS
+                btn1.classList.add('hidden');
+                
+                btn2.innerText = "ANOTHER RANDOM CARD";
+                btn2.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=card`; };
+
+                btn3.innerText = "VIEW VIDEO VERSION";
+                btn3.onclick = () => { window.location.href = `template.html?letter=${letter}&mode=video`; };
+
+                btn4.innerText = "BACK TO ALPHABET";
+                btn4.onclick = () => { window.location.href = "index.html"; };
             }
-            
-            // Button 2: Randomizer based on current mode
-            btn2.innerText = mode === 'video' ? "ANOTHER RANDOM VIDEO" : "ANOTHER RANDOM CARD";
-            btn2.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=${mode}`; };
-
-            // Button 3: Switch Mode (Video <-> Card)
-            btn3.innerText = mode === 'video' ? "VIEW CARD VERSION" : "VIEW VIDEO VERSION";
-            btn3.onclick = () => {
-                const newMode = mode === 'video' ? 'card' : 'video';
-                window.location.href = `template.html?letter=${letter}&mode=${newMode}`;
-            };
-
-            // Button 4: Back
-            btn4.innerText = "BACK TO ALPHABET";
-            btn4.onclick = () => { window.location.href = "index.html"; };
         }
 
         window.onload = init;
