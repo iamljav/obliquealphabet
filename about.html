@@ -11,12 +11,10 @@
             font-family: 'LEIXO';
             src: url('fonts/LEIXO.ttf') format('truetype');
         }
-        /* REGULAR WEIGHT */
         @font-face {
             font-family: 'NeueMachina-Regular';
             src: url('fonts/NeueMachina-Regular.otf') format('opentype');
         }
-        /* BOLD WEIGHT */
         @font-face {
             font-family: 'NeueMachina-Bold';
             src: url('fonts/NeueMachina-Bold.otf') format('opentype');
@@ -67,10 +65,8 @@
             text-align: left; 
         }
 
-        /* TARGETING LIGHT PARAGRAPHS */
         .content-container p {
             font-family: 'NeueMachina-Regular', sans-serif;
-            font-weight: 300; /* Regular/Light weight */
             margin-bottom: 25px;
             font-size: 14px;
             line-height: 1.8;
@@ -78,13 +74,10 @@
             opacity: 0.9;
         }
 
-        /* TARGETING BOLD TEXT (e.g., Oblique Alphabet, LJAV) */
         strong, .bold-text {
             font-family: 'NeueMachina-Bold', sans-serif;
-            font-weight: 700;
         }
 
-        /* LINKS */
         a {
             color: white;
             text-decoration: underline;
@@ -95,16 +88,16 @@
             opacity: 0.6;
         }
 
-        /* SPECIFIC CREDIT LINE: SMALLER */
+        /* THE CREDIT LINE: REDUCED SIZE AND OPACITY */
         .small-text {
             font-family: 'NeueMachina-Bold', sans-serif;
-            font-size: 11px; /* Smaller than the rest of the body text */
-            opacity: 0.7;
-            margin-top: 40px;
-            letter-spacing: 0.5px;
+            font-size: 9px; /* Ultra small */
+            opacity: 0.5;   /* Faded out */
+            margin-top: 50px;
+            letter-spacing: 0.3px;
+            line-height: 1.4;
         }
 
-        /* BACK BUTTON */
         .footer-nav {
             margin-top: 60px;
             padding-bottom: 80px;
@@ -126,7 +119,7 @@
 
         @media (max-width: 600px) {
             .content-container p { font-size: 13px; }
-            .small-text { font-size: 10px; }
+            .small-text { font-size: 8px; } /* Even smaller for mobile */
         }
     </style>
 </head>
@@ -147,7 +140,7 @@
         <p>
             Inspired by Gilles Deleuze’s <a href="https://www.semiotexte.com/shop/p/gilles-deleuze-from-a-to-z" target="_blank">Abécédaire</a> 
             and Brian Eno’s <a href="https://en.wikipedia.org/wiki/Oblique_Strategies" target="_blank">Oblique Strategies</a>, 
-            the project is an alphabet of short filmed monologues.
+            the project unfolds as an alphabet of short filmed monologues.
         </p>
 
         <p>
@@ -162,8 +155,8 @@
         <p>Use it to produce your own differences.</p>
 
         <p class="small-text">
-            <strong>Oblique Alphabet</strong> - an alphabet of control and resistance is an idea by 
-            <a href="https://www.instagram.com/iamljav/" target="_blank"><strong>LJAV</strong></a> executed through several GenAI platforms.
+            <strong>Oblique Alphabet</strong> — AN ALPHABET OF CONTROL AND CREATION HAS BEEN CONCEIVED AND EXECUTED BY 
+            <a href="https://www.instagram.com/iamljav/" target="_blank"><strong>LJAV</strong></a>
         </p>
     </main>
 
