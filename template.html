@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBLIQUE ALPHABET</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .bottom-interface {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 15px;
+            width: 100%;
+            max-width: 450px;
+            margin: 40px auto;
+        }
+        .control-btn {
+            aspect-ratio: 2 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-size: 11px;
+        }
+        /* Utility classes to show/hide elements */
+        .hidden { display: none !important; }
+        .media-frame img, .media-frame video {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="dynamic-page">
+
+    <main class="center-content">
+        <div class="media-frame">
+            <video id="letterVideo" class="hidden" autoplay muted playsinline>
+                <source id="videoSource" src="" type="video/mp4">
+            </video>
+
+            <img id="letterCard" class="hidden" src="" alt="Oblique Card">
+        </div>
+
+        <div class="bottom-interface">
+            <button id="btn-top-left" class="control-btn" onclick="handleTopLeft()"></button>
+            <button id="btn-top-right" class="control-btn" onclick="getRandom('video')">ANOTHER RANDOM VIDEO</button>
+            <button id="btn-bottom-left" class="control-btn" onclick="handleBottomLeft()"></button>
+            <button id="btn-bottom-right" class="control-btn" onclick="getRandom('card')">PICK A RANDOM CARD</button>
+        </div>
+    </main>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const letter = params.get('letter') || 'a';
+        const mode = params.get('mode') || 'video'; // Default to video
+
+        const videoEl = document.getElementById('letterVideo');
+        const cardEl = document.getElementById('letterCard');
+        const btnTL = document.getElementById('btn-top-left');
+        const btnBL = document.getElementById('btn-bottom-left');
+
+        if (mode === 'video') {
+            // Show Video, Hide Card
+            videoEl.classList.remove('hidden');
+            document.getElementById('videoSource').src = `assets/videos/${letter}.mp4`;
+            videoEl.load();
+            
+            // Set Video Buttons
+            btnTL.innerText = "SOUND ON";
+            btnBL.innerText = "REPLAY VIDEO";
+        } else {
+            // Show Card, Hide Video
+            cardEl.classList.remove('hidden');
+            cardEl.src = `assets/cards/${letter}.png`;
+            
+            // Set Card Buttons (Hide them or repurpose them)
+            btnTL.innerText = "SHARE CARD";
+            btnBL.innerText = "BACK TO START";
+        }
+
+        function handleTopLeft() {
+            if (mode === 'video') toggleSound();
+            else console.log("Share logic here");
+        }
+
+        function handleBottomLeft() {
+            if (mode === 'video') {
+                videoEl.currentTime = 0;
+                videoEl.play();
+            } else {
+                window.location.href = 'index.html';
+            }
+        }
+
+        function getRandom(newMode) {
+            const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+            const randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+            window.location.href = `template.html?letter=${randomLetter}&mode=${newMode}`;
+        }
+    </script>
+</body>
+</html>
