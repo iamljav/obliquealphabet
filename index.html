@@ -6,7 +6,7 @@
     <title>OBLIQUE ALPHABET | HOME</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* 1. FONT SETUP */
+        /* FONT SETUP */
         @font-face {
             font-family: 'LEIXO';
             src: url('fonts/LEIXO.ttf') format('truetype');
@@ -26,21 +26,30 @@
             text-align: center;
         }
 
-        .main-header {
-            padding: 80px 20px 20px;
+        /* SYNCED WIDTH FOR ALL CONTAINERS */
+        .main-header, .content-width {
             width: 100%;
-            max-width: 600px;
+            max-width: 600px; /* The master width */
+            padding: 0 20px;   /* The master padding */
+            box-sizing: border-box;
         }
 
-        /* 2. LOGO: SINGLE LINE MOBILE FIX */
+        .main-header {
+            padding-top: 80px;
+            padding-bottom: 20px;
+        }
+
+        /* LOGO: JUSTIFIED TO EDGES */
         .logo {
             font-family: 'LEIXO', sans-serif;
-            font-size: clamp(24px, 8.5vw, 54px);
+            font-size: clamp(24px, 8.8vw, 54px);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 2.2px; /* Precision adjustment for edge-to-edge alignment */
             margin: 0;
             white-space: nowrap; 
             display: block;
+            width: 100%;
+            text-align: justify; /* Helps with edge alignment in some browsers */
         }
 
         .subtitle {
@@ -52,14 +61,7 @@
             letter-spacing: 2px;
         }
 
-        /* 3. WIDER CONTAINER TO MATCH TITLE */
-        .content-width {
-            width: 100%;
-            max-width: 600px; 
-            padding: 0 20px;
-        }
-
-        /* 4. TOP UTILITY ROW */
+        /* TOP UTILITY ROW */
         .utility-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -88,11 +90,12 @@
             color: black;
         }
 
-        /* 5. ALPHABET GRID */
+        /* ALPHABET GRID */
         .alphabet-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr); 
             gap: 12px;
+            width: 100%;
         }
 
         .letter-link {
@@ -113,7 +116,6 @@
             transform: scale(1.05);
         }
 
-        /* 6. FOOTER */
         .main-footer {
             margin-top: 60px;
             padding-bottom: 80px;
@@ -127,14 +129,9 @@
             text-transform: uppercase;
             border-bottom: 1px solid rgba(255,255,255,0.3);
             padding-bottom: 2px;
-            transition: border-color 0.2s ease;
         }
 
-        .about-link:hover {
-            border-bottom-color: white;
-        }
-
-        /* 7. MOBILE RESPONSIVENESS */
+        /* MOBILE RESPONSIVENESS */
         @media (max-width: 600px) {
             .alphabet-grid { grid-template-columns: repeat(4, 1fr); }
             @media (max-width: 400px) {
