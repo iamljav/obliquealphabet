@@ -6,10 +6,27 @@
     <title>OBLIQUE ALPHABET</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* FONT PATH UPDATED TO NEUE MACHINA */
+        @font-face {
+            font-family: 'NeueMachina';
+            src: url('fonts/NeueMachina-Regular.otf') format('opentype');
+        }
+
+        body {
+            background-color: #1a1a1a;
+            font-family: 'NeueMachina', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
         .media-container {
             width: 100%;
             max-width: 400px;
-            margin: 0 auto;
+            margin: 40px auto 0;
             min-height: 400px;
             display: flex;
             justify-content: center;
@@ -33,6 +50,7 @@
             width: 100%;
             max-width: 450px;
             margin: 40px auto;
+            padding: 0 20px;
         }
 
         .control-btn {
@@ -48,23 +66,41 @@
             border: 1px solid white;
             background: transparent;
             color: white;
+            font-family: 'NeueMachina', sans-serif;
             line-height: 1.2;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .control-btn:hover {
+            background-color: white;
+            color: black;
         }
 
         .hidden { display: none !important; }
 
+        .about-nav {
+            margin-top: 20px;
+            padding-bottom: 60px;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: underline;
+            font-size: 13px;
+            opacity: 0.6;
+            font-family: 'NeueMachina', sans-serif;
+        }
+
         @media (max-width: 450px) {
             .control-btn { font-size: 9px; }
+            .media-container { min-height: 300px; }
         }
     </style>
 </head>
 <body class="letter-page">
 
-    <header class="main-header">
-        <div class="title-block">
-            <h1 class="logo">OBLIQUE ALPHABET</h1>
-            <p class="subtitle">an alphabet of control and creation</p>
-        </div>
+    <header class="main-header" style="padding-top: 60px;">
+        <h1 class="logo" style="font-size: 42px; text-transform: uppercase; letter-spacing: 2px;">OBLIQUE ALPHABET</h1>
     </header>
 
     <main class="center-content">
@@ -82,7 +118,7 @@
             <button class="control-btn" onclick="getRandom('card')">PICK A RANDOM CARD</button>
         </div>
         
-        <footer class="about-nav" style="text-align: center; margin-top: 20px;">
+        <footer class="about-nav">
             <a href="index.html" class="back-link">BACK TO THE ALPHABET</a>
         </footer>
     </main>
