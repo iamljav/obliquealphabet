@@ -6,12 +6,30 @@
     <title>OBLIQUE ALPHABET</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* 2x2 Grid Layout */
+        .media-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            min-height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0; /* Managed by script.js for smooth fade */
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .media-container video, 
+        .media-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         .bottom-interface {
             display: grid;
             grid-template-columns: 1fr 1fr;
             column-gap: 15px;
-            row-gap: 30px;
+            row-gap: 20px;
             width: 100%;
             max-width: 450px;
             margin: 40px auto;
@@ -27,33 +45,13 @@
             font-size: 11px;
             text-transform: uppercase;
             cursor: pointer;
-            line-height: 1.2;
-            border: 1px solid white; /* Adjust to match your style.css */
+            border: 1px solid white;
             background: transparent;
             color: white;
+            line-height: 1.2;
         }
 
-        /* Essential for Dynamic Swapping */
-        .hidden {
-            display: none !important;
-        }
-
-        .media-container {
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto;
-            min-height: 300px; /* Prevents layout jump when loading */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .media-container video, 
-        .media-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+        .hidden { display: none !important; }
 
         @media (max-width: 450px) {
             .control-btn { font-size: 9px; }
@@ -74,19 +72,17 @@
             <video id="letterVideo" class="hidden" autoplay muted playsinline>
                 <source id="videoSource" src="" type="video/mp4">
             </video>
-
             <img id="letterCard" class="hidden" src="" alt="Oblique Strategy Card">
         </div>
 
         <div class="bottom-interface">
             <button id="soundToggle" class="control-btn" onclick="toggleSound()">SOUND ON</button>
             <button class="control-btn" onclick="getRandom('video')">ANOTHER RANDOM VIDEO</button>
-            
             <button id="replayBtn" class="control-btn" onclick="replayVideo()">REPLAY</button>
             <button class="control-btn" onclick="getRandom('card')">PICK A RANDOM CARD</button>
         </div>
         
-        <footer class="about-nav">
+        <footer class="about-nav" style="text-align: center; margin-top: 20px;">
             <a href="index.html" class="back-link">BACK TO THE ALPHABET</a>
         </footer>
     </main>
@@ -94,21 +90,18 @@
     <script src="script.js"></script>
 
     <script>
-        /* This small local script ensures the buttons adapt 
-           their labels if you are in Card mode.
-        */
+        // Adjust button labels if we are in Card Mode
         window.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             const mode = params.get('mode') || 'video';
-            const soundBtn = document.getElementById('soundToggle');
-            const replayBtn = document.getElementById('replayBtn');
-
             if (mode === 'card') {
-                // Change video-specific buttons for card mode
-                soundBtn.innerText = "VIEWING CARD";
-                soundBtn.disabled = true; // No sound on a PNG
-                soundBtn.style.opacity = "0.5";
+                const soundBtn = document.getElementById('soundToggle');
+                const replayBtn = document.getElementById('replayBtn');
                 
+                soundBtn.innerText = "---";
+                soundBtn.style.opacity = "0.3";
+                soundBtn.disabled = true;
+
                 replayBtn.innerText = "BACK TO START";
                 replayBtn.onclick = () => window.location.href = 'index.html';
             }
