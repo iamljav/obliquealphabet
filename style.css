@@ -8,6 +8,7 @@
     src: url('fonts/NeueMachina-Bold.otf') format('opentype');
 }
 
+/* BASE RESET */
 * {
     margin: 0;
     padding: 0;
@@ -17,15 +18,31 @@
 body {
     background-color: #1a1a1a;
     color: white;
-    font-family: 'NeueMachina-Bold', sans-serif;
+    font-family: 'NeueMachina-Bold', sans-serif; /* Global fallback */
     -webkit-font-smoothing: antialiased;
 }
 
+/* UTILITIES */
 .hidden { display: none !important; }
+
+/* SHARED LOGO STYLE FOR OTHER PAGES */
+.logo {
+    font-family: 'LEIXO', sans-serif;
+    font-size: clamp(24px, 8.5vw, 54px);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
 
 /* Global button reset */
 button {
     cursor: pointer;
     border: none;
     background: none;
+    color: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
