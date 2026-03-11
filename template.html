@@ -6,100 +6,113 @@
     <title>OBLIQUE ALPHABET</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* 2x2 Grid Layout */
         .bottom-interface {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px 15px;
+            column-gap: 15px;
+            row-gap: 30px;
             width: 100%;
             max-width: 450px;
             margin: 40px auto;
         }
+
         .control-btn {
             aspect-ratio: 2 / 1;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            padding: 10px;
+            font-size: 11px;
             text-transform: uppercase;
             cursor: pointer;
-            font-size: 11px;
+            line-height: 1.2;
+            border: 1px solid white; /* Adjust to match your style.css */
+            background: transparent;
+            color: white;
         }
-        /* Utility classes to show/hide elements */
-        .hidden { display: none !important; }
-        .media-frame img, .media-frame video {
+
+        /* Essential for Dynamic Swapping */
+        .hidden {
+            display: none !important;
+        }
+
+        .media-container {
             width: 100%;
             max-width: 400px;
+            margin: 0 auto;
+            min-height: 300px; /* Prevents layout jump when loading */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .media-container video, 
+        .media-container img {
+            width: 100%;
             height: auto;
+            display: block;
+        }
+
+        @media (max-width: 450px) {
+            .control-btn { font-size: 9px; }
         }
     </style>
 </head>
-<body class="dynamic-page">
+<body class="letter-page">
+
+    <header class="main-header">
+        <div class="title-block">
+            <h1 class="logo">OBLIQUE ALPHABET</h1>
+            <p class="subtitle">an alphabet of control and creation</p>
+        </div>
+    </header>
 
     <main class="center-content">
-        <div class="media-frame">
+        <div class="media-container">
             <video id="letterVideo" class="hidden" autoplay muted playsinline>
                 <source id="videoSource" src="" type="video/mp4">
             </video>
 
-            <img id="letterCard" class="hidden" src="" alt="Oblique Card">
+            <img id="letterCard" class="hidden" src="" alt="Oblique Strategy Card">
         </div>
 
         <div class="bottom-interface">
-            <button id="btn-top-left" class="control-btn" onclick="handleTopLeft()"></button>
-            <button id="btn-top-right" class="control-btn" onclick="getRandom('video')">ANOTHER RANDOM VIDEO</button>
-            <button id="btn-bottom-left" class="control-btn" onclick="handleBottomLeft()"></button>
-            <button id="btn-bottom-right" class="control-btn" onclick="getRandom('card')">PICK A RANDOM CARD</button>
+            <button id="soundToggle" class="control-btn" onclick="toggleSound()">SOUND ON</button>
+            <button class="control-btn" onclick="getRandom('video')">ANOTHER RANDOM VIDEO</button>
+            
+            <button id="replayBtn" class="control-btn" onclick="replayVideo()">REPLAY</button>
+            <button class="control-btn" onclick="getRandom('card')">PICK A RANDOM CARD</button>
         </div>
+        
+        <footer class="about-nav">
+            <a href="index.html" class="back-link">BACK TO THE ALPHABET</a>
+        </footer>
     </main>
 
+    <script src="script.js"></script>
+
     <script>
-        const params = new URLSearchParams(window.location.search);
-        const letter = params.get('letter') || 'a';
-        const mode = params.get('mode') || 'video'; // Default to video
+        /* This small local script ensures the buttons adapt 
+           their labels if you are in Card mode.
+        */
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const mode = params.get('mode') || 'video';
+            const soundBtn = document.getElementById('soundToggle');
+            const replayBtn = document.getElementById('replayBtn');
 
-        const videoEl = document.getElementById('letterVideo');
-        const cardEl = document.getElementById('letterCard');
-        const btnTL = document.getElementById('btn-top-left');
-        const btnBL = document.getElementById('btn-bottom-left');
-
-        if (mode === 'video') {
-            // Show Video, Hide Card
-            videoEl.classList.remove('hidden');
-            document.getElementById('videoSource').src = `assets/videos/${letter}.mp4`;
-            videoEl.load();
-            
-            // Set Video Buttons
-            btnTL.innerText = "SOUND ON";
-            btnBL.innerText = "REPLAY VIDEO";
-        } else {
-            // Show Card, Hide Video
-            cardEl.classList.remove('hidden');
-            cardEl.src = `assets/cards/${letter}.png`;
-            
-            // Set Card Buttons (Hide them or repurpose them)
-            btnTL.innerText = "SHARE CARD";
-            btnBL.innerText = "BACK TO START";
-        }
-
-        function handleTopLeft() {
-            if (mode === 'video') toggleSound();
-            else console.log("Share logic here");
-        }
-
-        function handleBottomLeft() {
-            if (mode === 'video') {
-                videoEl.currentTime = 0;
-                videoEl.play();
-            } else {
-                window.location.href = 'index.html';
+            if (mode === 'card') {
+                // Change video-specific buttons for card mode
+                soundBtn.innerText = "VIEWING CARD";
+                soundBtn.disabled = true; // No sound on a PNG
+                soundBtn.style.opacity = "0.5";
+                
+                replayBtn.innerText = "BACK TO START";
+                replayBtn.onclick = () => window.location.href = 'index.html';
             }
-        }
-
-        function getRandom(newMode) {
-            const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-            const randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
-            window.location.href = `template.html?letter=${randomLetter}&mode=${newMode}`;
-        }
+        });
     </script>
 </body>
 </html>
