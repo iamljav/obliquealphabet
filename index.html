@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OBLIQUE ALPHABET | HOME</title>
+    <title>OBLIQUEALPHABET | HOME</title>
     <link rel="stylesheet" href="style.css">
     <style>
         @font-face { font-family: 'LEIXO'; src: url('fonts/LEIXO.ttf') format('truetype'); }
@@ -41,11 +41,7 @@
             text-decoration: none;
         }
 
-        /* SPACE FIX: Forces a gap between words in space-between layout */
-        .logo span.space { 
-            display: inline-block;
-            width: 4vw; 
-        }
+        /* The space span CSS is no longer needed but won't interfere */
 
         .subtitle {
             font-family: 'NeueMachina-Bold', sans-serif;
@@ -115,7 +111,6 @@
             .main-header, .content-width { padding: 0 15px; }
             .alphabet-grid { grid-template-columns: repeat(4, 1fr); }
             .utility-row { grid-template-columns: 1fr; }
-            .logo span.space { width: 5vw; }
         }
     </style>
 </head>
@@ -124,9 +119,7 @@
     <header class="main-header">
         <h1 class="logo">
             <a href="index.html">
-                <span>O</span><span>B</span><span>L</span><span>I</span><span>Q</span><span>U</span><span>E</span>
-                <span class="space"></span>
-                <span>A</span><span>L</span><span>P</span><span>H</span><span>A</span><span>B</span><span>E</span><span>T</span>
+                <span>O</span><span>B</span><span>L</span><span>I</span><span>Q</span><span>U</span><span>E</span><span>A</span><span>L</span><span>P</span><span>H</span><span>A</span><span>B</span><span>E</span><span>T</span>
             </a>
         </h1>
         <p class="subtitle">an alphabet of control and resistance</p>
