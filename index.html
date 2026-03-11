@@ -6,10 +6,10 @@
     <title>OBLIQUE ALPHABET | HOME</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* 1. FONT SETUP - Matching your folder structure */
+        /* FONT PATH CORRECTED FOR YOUR ASSETS FOLDER */
         @font-face {
             font-family: 'MSCHF';
-            src: url('fonts/MSCHF.otf') format('opentype');
+            src: url('assets/fonts/MSCHF.otf') format('opentype');
         }
 
         body {
@@ -20,35 +20,32 @@
             flex-direction: column;
             align-items: center;
             color: white;
-        }
-
-        /* 2. HEADER */
-        .main-header {
-            padding: 80px 20px 40px;
             text-align: center;
         }
 
+        .main-header {
+            padding: 80px 20px 40px;
+        }
+
         .logo {
-            font-size: 48px;
+            font-size: 54px;
             text-transform: uppercase;
             letter-spacing: 4px;
             margin: 0;
-            line-height: 1;
+            font-family: 'MSCHF', sans-serif;
         }
 
         .subtitle {
-            font-size: 14px;
+            font-size: 16px;
             opacity: 0.8;
             margin-top: 15px;
-            letter-spacing: 1px;
+            font-family: 'MSCHF', sans-serif;
         }
 
-        /* 3. THE GRID */
         .grid-container {
             width: 100%;
             max-width: 450px;
             padding: 20px;
-            margin-top: 20px;
         }
 
         .alphabet-grid {
@@ -57,7 +54,6 @@
             gap: 12px;
         }
 
-        /* 4. THE WHITE BUTTONS */
         .letter-link {
             display: flex;
             align-items: center;
@@ -68,15 +64,14 @@
             text-decoration: none;
             font-size: 24px;
             font-family: 'MSCHF', sans-serif;
-            transition: transform 0.1s ease, background-color 0.2s ease;
+            transition: transform 0.1s ease;
         }
 
         .letter-link:hover {
-            background-color: #dddddd;
+            background-color: #eee;
             transform: scale(1.05);
         }
 
-        /* 5. FOOTER */
         .main-footer {
             margin-top: 60px;
             padding-bottom: 60px;
@@ -84,24 +79,18 @@
 
         .about-link {
             color: white;
-            text-decoration: none;
-            border-bottom: 1px solid white;
-            font-size: 13px;
-            opacity: 0.6;
+            text-decoration: underline;
+            font-size: 14px;
+            font-family: 'MSCHF', sans-serif;
         }
 
-        .about-link:hover {
-            opacity: 1;
-        }
-
-        /* RESPONSIVE */
         @media (max-width: 450px) {
             .alphabet-grid { grid-template-columns: repeat(4, 1fr); }
-            .logo { font-size: 34px; }
+            .logo { font-size: 38px; }
         }
     </style>
 </head>
-<body class="home-page">
+<body>
 
     <header class="main-header">
         <h1 class="logo">OBLIQUE ALPHABET</h1>
@@ -109,8 +98,7 @@
     </header>
 
     <main class="grid-container">
-        <nav id="alphabet-grid" class="alphabet-grid">
-            </nav>
+        <nav id="alphabet-grid" class="alphabet-grid"></nav>
     </main>
 
     <footer class="main-footer">
@@ -118,19 +106,15 @@
     </footer>
 
     <script>
-        // This script creates the 26 links so you don't have to
         const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
         const grid = document.getElementById('alphabet-grid');
 
         alphabet.forEach(letter => {
             const char = letter.toLowerCase();
             const link = document.createElement('a');
-            
-            // Points to the single template.html we created
             link.href = `template.html?letter=${char}&mode=video`;
             link.className = 'letter-link';
             link.innerHTML = `<span>${letter}</span>`;
-            
             grid.appendChild(link);
         });
     </script>
