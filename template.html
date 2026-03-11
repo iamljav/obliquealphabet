@@ -6,7 +6,6 @@
     <title>OBLIQUE ALPHABET</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* FONT SETUP */
         @font-face {
             font-family: 'LEIXO';
             src: url('fonts/LEIXO.ttf') format('truetype');
@@ -26,19 +25,14 @@
             text-align: center;
         }
 
-        /* SYNCED WIDTH FOR ALL CONTAINERS */
         .main-header, .media-container, .bottom-interface {
             width: 100%;
             max-width: 600px;
             box-sizing: border-box;
         }
 
-        .main-header {
-            padding-top: 60px;
-            padding-bottom: 0;
-        }
+        .main-header { padding-top: 60px; }
 
-        /* FLEX LOGO FOR PERFECT EDGE ALIGNMENT */
         .logo {
             font-family: 'LEIXO', sans-serif;
             font-size: clamp(24px, 8.5vw, 54px);
@@ -52,23 +46,23 @@
 
         .logo span.space { width: 0.3em; }
 
-        /* MEDIA DISPLAY */
+        /* FIXED MEDIA CONTAINER */
         .media-container {
             margin: 40px auto 0;
-            aspect-ratio: 1 / 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: opacity 0.5s ease;
+            background-color: #1a1a1a;
         }
 
         .media-container video, .media-container img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            max-height: 70vh; /* Ensures it doesn't push buttons off screen */
+            object-fit: contain; /* Ensures full video is visible */
+            display: block;
         }
 
-        /* 2x2 CONTROL GRID */
         .bottom-interface {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -89,7 +83,6 @@
             border: 1px solid white;
             background: transparent;
             color: white;
-            transition: all 0.2s ease;
         }
 
         .control-btn:hover {
@@ -100,9 +93,7 @@
         .hidden { display: none !important; }
 
         @media (max-width: 600px) {
-            .main-header, .bottom-interface { padding: 0 15px; }
-            .media-container { padding: 0 15px; }
-            .control-btn { font-size: 8px; }
+            .main-header, .bottom-interface, .media-container { padding: 0 15px; }
         }
     </style>
 </head>
@@ -118,7 +109,7 @@
 
     <main>
         <div class="media-container">
-            <video id="letterVideo" class="hidden" autoplay muted playsinline>
+            <video id="letterVideo" class="hidden" autoplay muted playsinline loop>
                 <source id="videoSource" src="" type="video/mp4">
             </video>
             <img id="letterCard" class="hidden" src="" alt="Strategy Card">
