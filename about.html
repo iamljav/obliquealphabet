@@ -5,52 +5,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABOUT | OBLIQUE ALPHABET</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* FONT SETUP */
+        @font-face {
+            font-family: 'LEIXO';
+            src: url('fonts/LEIXO.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'NeueMachina-Bold';
+            src: url('fonts/NeueMachina-Bold.otf') format('opentype');
+        }
+
+        body {
+            background-color: #1a1a1a;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            text-align: center;
+            font-family: 'NeueMachina-Bold', sans-serif;
+        }
+
+        .main-header {
+            padding: 80px 20px 40px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* MOBILE-LOCK LOGO */
+        .logo {
+            font-family: 'LEIXO', sans-serif;
+            font-size: clamp(24px, 8.5vw, 54px);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            white-space: nowrap;
+            display: block;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-top: 15px;
+            letter-spacing: 2px;
+        }
+
+        /* TEXT CONTENT BOX */
+        .content-container {
+            width: 100%;
+            max-width: 600px; 
+            padding: 0 30px;
+            margin-top: 20px;
+            line-height: 1.8;
+            text-align: left; 
+        }
+
+        .content-container p {
+            margin-bottom: 25px;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            opacity: 0.9;
+        }
+
+        /* LINKS */
+        a {
+            color: white;
+            text-decoration: underline;
+            transition: opacity 0.2s ease;
+        }
+
+        a:hover {
+            opacity: 0.6;
+        }
+
+        .small-text {
+            font-size: 11px;
+            opacity: 0.7;
+            margin-top: 40px;
+        }
+
+        /* BACK BUTTON */
+        .footer-nav {
+            margin-top: 60px;
+            padding-bottom: 80px;
+        }
+
+        .back-link {
+            text-decoration: none;
+            font-size: 12px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 2px;
+        }
+
+        .back-link:hover {
+            border-bottom-color: white;
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            .content-container { font-size: 13px; }
+        }
+    </style>
 </head>
-<body class="about-page">
+<body>
 
     <header class="main-header">
-        <div class="title-block">
-            <h1 class="logo">
-                <span>O</span><span>B</span><span>L</span><span>I</span><span>Q</span><span>U</span><span>E</span>&nbsp;<span>A</span><span>L</span><span>P</span><span>H</span><span>A</span><span>B</span><span>E</span><span>T</span>
-            </h1>
-            <p class="subtitle">an alphabet of control and creation</p>
-        </div>
+        <h1 class="logo">OBLIQUE ALPHABET</h1>
+        <p class="subtitle">an alphabet of control and resistance</p>
     </header>
 
-    <main class="center-content">
-        <div class="about-content light-text">
-            <p>Can technology break the patterns it produces?</p>
-            <p>Can standardized systems generate difference?</p>
-            <p>Can cultural agency be reclaimed?</p>
+    <main class="content-container">
+        <p>Can technology break the patterns it produces?</p>
+        <p>Can standardized systems generate difference?</p>
+        <p>Can cultural agency be reclaimed?</p>
 
-            <p><span class="bold-text">Oblique Alphabet</span> approaches these questions as both an ontology and a tool.</p>
+        <p><strong>Oblique Alphabet</strong> approaches these questions as both an ontology and a tool.</p>
 
-            <p>
-                Inspired by Gilles Deleuze’s <a href="https://www.semiotexte.com/shop/p/gilles-deleuze-from-a-to-z" target="_blank">Abécédaire</a> 
-                and Brian Eno’s <a href="https://en.wikipedia.org/wiki/Oblique_Strategies" target="_blank">Oblique Strategies</a>, 
-                the project unfolds as an alphabet of short filmed monologues.
-            </p>
+        <p>
+            Inspired by Gilles Deleuze’s <a href="https://www.semiotexte.com/shop/p/gilles-deleuze-from-a-to-z" target="_blank">Abécédaire</a> 
+            and Brian Eno’s <a href="https://en.wikipedia.org/wiki/Oblique_Strategies" target="_blank">Oblique Strategies</a>, 
+            the project unfolds as an alphabet of short filmed monologues.
+        </p>
 
-            <p>Each letter isolates a process through which technological systems shape perception, behavior, and identity.</p>
-            <p> Each film ends with an oblique instruction — a deviation, to shift from use to agency.</p>
+        <p>
+            Each letter isolates a process through which technological systems shape perception, behavior, and identity. 
+            Each film ends with an oblique instruction — a deviation.
+        </p>
 
-            <p>Technology produces patterns.</p>
+        <p>Technology produces patterns.</p>
 
-            <p><span class="bold-text">Oblique Alphabet</span> suggests disruptions.</p>
+        <p><strong>Oblique Alphabet</strong> introduces disruptions.</p>
 
-            <p>Use it to produce your own differences.</p>
+        <p>Use it to produce your own differences.</p>
 
-            <p class="small-text">
-                <span class="bold-text">Oblique Alphabet</span> - an alphabet of control and creation is conceived by 
-                <a href="https://www.instagram.com/iamljav/" target="_blank">LJAV</a> and executed through various Gen AI platforms.
-            </p>
-        </div>
-
-        <footer class="about-nav">
-            <a href="index.html" class="back-link">BACK TO THE ALPHABET</a>
-        </footer>
+        <p class="small-text">
+            <strong>Oblique Alphabet</strong> - an alphabet of control and resistance is an idea by 
+            <a href="https://www.instagram.com/iamljav/" target="_blank">LJAV</a> executed through several GenAI platforms.
+        </p>
     </main>
 
-    <script src="script.js"></script>
+    <footer class="footer-nav">
+        <a href="index.html" class="back-link">BACK TO THE ALPHABET</a>
+    </footer>
+
 </body>
 </html>
