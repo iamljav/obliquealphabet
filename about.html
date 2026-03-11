@@ -1,36 +1,131 @@
-<style>
-    /* ... previous styles ... */
-
-    .content-container p {
-        font-family: 'NeueMachina-Regular', sans-serif;
-        margin-bottom: 25px;
-        font-size: 14px;
-        line-height: 1.8;
-        letter-spacing: 0.5px;
-        opacity: 0.9;
-    }
-
-    /* THE ULTRA-SMALL CREDIT FIX */
-    .content-container p.small-text {
-        font-family: 'NeueMachina-Bold', sans-serif;
-        font-size: 8px !important;   /* Hard override to 8px */
-        line-height: 1.2;
-        opacity: 0.4 !important;     /* Even more faded */
-        margin-top: 80px;            /* More separation */
-        letter-spacing: 0.2px;
-        text-transform: uppercase;
-    }
-
-    @media (max-width: 600px) {
-        .content-container p.small-text { 
-            font-size: 7px !important; /* Tiny on mobile */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABOUT | OBLIQUE ALPHABET</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* FONT SETUP */
+        @font-face {
+            font-family: 'LEIXO';
+            src: url('fonts/LEIXO.ttf') format('truetype');
         }
-    }
-</style>
+        @font-face {
+            font-family: 'NeueMachina-Regular';
+            src: url('fonts/NeueMachina-Regular.otf') format('opentype');
+        }
+        @font-face {
+            font-family: 'NeueMachina-Bold';
+            src: url('fonts/NeueMachina-Bold.otf') format('opentype');
+        }
 
-<main class="content-container">
-    <p class="small-text">
-        Oblique Alphabet — AN ALPHABET OF CONTROL AND CREATION HAS BEEN CONCEIVED AND EXECUTED BY 
-        <a href="https://www.instagram.com/iamljav/" target="_blank"><strong>LJAV</strong></a>
-    </p>
-</main>
+        body {
+            background-color: #1a1a1a;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .main-header {
+            padding: 80px 20px 40px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* LOGO: SINGLE LINE MOBILE FIX */
+        .logo {
+            font-family: 'LEIXO', sans-serif;
+            font-size: clamp(24px, 8.5vw, 54px);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            white-space: nowrap;
+            display: block;
+        }
+
+        .subtitle {
+            font-family: 'NeueMachina-Bold', sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-top: 15px;
+            letter-spacing: 2px;
+        }
+
+        /* TEXT CONTENT BOX */
+        .content-container {
+            width: 100%;
+            max-width: 600px; 
+            padding: 0 30px;
+            margin-top: 20px;
+            text-align: left; 
+        }
+
+        /* LIGHT WEIGHT BODY TEXT */
+        .content-container p {
+            font-family: 'NeueMachina-Regular', sans-serif;
+            margin-bottom: 25px;
+            font-size: 14px;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+            opacity: 0.9;
+        }
+
+        /* BOLD TEXT OVERRIDES */
+        strong, .bold-text {
+            font-family: 'NeueMachina-Bold', sans-serif;
+        }
+
+        a {
+            color: white;
+            text-decoration: underline;
+            transition: opacity 0.2s ease;
+        }
+
+        a:hover {
+            opacity: 0.6;
+        }
+
+        /* ULTRA-SMALL CREDIT LINE */
+        .content-container p.small-text {
+            font-family: 'NeueMachina-Bold', sans-serif;
+            font-size: 8px !important;
+            line-height: 1.4;
+            opacity: 0.4 !important;
+            margin-top: 80px;
+            letter-spacing: 0.2px;
+            text-transform: uppercase;
+        }
+
+        .footer-nav {
+            margin-top: 60px;
+            padding-bottom: 80px;
+        }
+
+        .back-link {
+            font-family: 'NeueMachina-Bold', sans-serif;
+            text-decoration: none;
+            font-size: 12px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 2px;
+        }
+
+        .back-link:hover {
+            border-bottom-color: white;
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            .content-container p { font-size: 13px; }
+            .content-container p.small-text { font-size: 7px !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
