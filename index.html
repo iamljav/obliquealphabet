@@ -6,7 +6,7 @@
     <title>OBLIQUE ALPHABET | HOME</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* FONT SETUP */
+        /* 1. FONT SETUP */
         @font-face {
             font-family: 'LEIXO';
             src: url('fonts/LEIXO.ttf') format('truetype');
@@ -28,14 +28,20 @@
 
         .main-header {
             padding: 80px 20px 20px;
+            width: 100%;
+            max-width: 600px;
         }
 
+        /* 2. LOGO: SINGLE LINE MOBILE FIX */
         .logo {
             font-family: 'LEIXO', sans-serif;
-            font-size: 54px;
+            /* clamp(min, preferred, max) ensures it stays on one line */
+            font-size: clamp(24px, 8.5vw, 54px);
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 2px;
             margin: 0;
+            white-space: nowrap; /* Forces one line */
+            display: block;
         }
 
         .subtitle {
@@ -47,14 +53,14 @@
             letter-spacing: 2px;
         }
 
-        /* WIDER CONTAINER TO MATCH TITLE */
+        /* 3. WIDER CONTAINER TO MATCH TITLE */
         .content-width {
             width: 100%;
             max-width: 600px; 
             padding: 0 20px;
         }
 
-        /* TOP UTILITY ROW */
+        /* 4. TOP UTILITY ROW */
         .utility-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -83,7 +89,7 @@
             color: black;
         }
 
-        /* ALPHABET GRID */
+        /* 5. ALPHABET GRID */
         .alphabet-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr); 
@@ -108,7 +114,7 @@
             transform: scale(1.05);
         }
 
-        /* FOOTER LINK */
+        /* 6. FOOTER */
         .main-footer {
             margin-top: 60px;
             padding-bottom: 80px;
@@ -129,10 +135,13 @@
             border-bottom-color: white;
         }
 
+        /* 7. MOBILE RESPONSIVENESS */
         @media (max-width: 600px) {
-            .logo { font-size: 38px; }
             .alphabet-grid { grid-template-columns: repeat(4, 1fr); }
-            .utility-row { grid-template-columns: 1fr; }
+            /* Stack utility buttons on very small phones if needed */
+            @media (max-width: 400px) {
+                .utility-row { grid-template-columns: 1fr; }
+            }
         }
     </style>
 </head>
