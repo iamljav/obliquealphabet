@@ -1,10 +1,13 @@
-/* 1. GLOBAL FONT LOAD */
+/* GLOBAL FONTS */
 @font-face {
     font-family: 'LEIXO';
     src: url('fonts/LEIXO.ttf') format('truetype');
 }
+@font-face {
+    font-family: 'NeueMachina-Bold';
+    src: url('fonts/NeueMachina-Bold.otf') format('opentype');
+}
 
-/* 2. BASE RESET */
 * {
     margin: 0;
     padding: 0;
@@ -12,35 +15,17 @@
 }
 
 body {
-    background-color: #1a1a1a; /* Your signature dark grey/black */
+    background-color: #1a1a1a;
     color: white;
-    font-family: 'LEIXO', sans-serif;
-    line-height: 1.6;
+    font-family: 'NeueMachina-Bold', sans-serif;
     -webkit-font-smoothing: antialiased;
 }
 
-/* 3. GLOBAL UTILITIES */
-.hidden { 
-    display: none !important; 
-}
+.hidden { display: none !important; }
 
-/* Ensure links don't have default blue styling */
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* 4. BUTTON BASICS */
-/* This ensures any button using this class across the site looks consistent */
-.control-btn, .utility-btn {
-    font-family: 'LEIXO', sans-serif;
-    text-transform: uppercase;
-    transition: all 0.2s ease;
-}
-
-/* 5. MEDIA HANDLING */
-/* Prevents images/videos from breaking the layout on mobile */
-img, video {
-    max-width: 100%;
-    height: auto;
+/* Global button reset */
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
 }
