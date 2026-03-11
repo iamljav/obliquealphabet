@@ -1,51 +1,54 @@
 /**
- * OBLIQUE ALPHABET - Core Logic
- * Handles randomized navigation, video controls, and grid generation.
+ * OBLIQUE ALPHABET - MASTER DYNAMIC ENGINE
  */
 
-// 1. RANDOMIZED NAVIGATION
-function randomVideo() {
-    const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
-    const randomLetter = letters[Math.floor(Math.random() * letters.length)];
-    
-    // Check if we are already inside the assets folder to determine path prefix
-    const isInsideAssets = window.location.pathname.includes('assets');
-    const prefix = isInsideAssets ? '../videos/' : 'assets/videos/';
-    
-    window.location.href = `${prefix}${randomLetter}.html`;
-}
+// 1. STARTUP: Load content based on URL parameters
+window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const letter = params.get('letter') || 'a'; // Default to 'a'
+    const mode = params.get('mode') || 'video'; // Default to 'video'
 
-function randomCard() {
-    const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
-    const randomLetter = letters[Math.floor(Math.random() * letters.length)];
-    
-    // Logic for randomized card navigation
-    const isInsideAssets = window.location.pathname.includes('assets');
-    const prefix = isInsideAssets ? '../cards/' : 'assets/cards/';
-    
-    window.location.href = `${prefix}${randomLetter}.html`;
-}
+    const videoElement = document.getElementById('letterVideo');
+    const videoSource = document.getElementById('videoSource');
+    const cardElement = document.getElementById('letterCard');
 
-// 2. VIDEO CONTROLS
+    if (mode === 'video') {
+        // Prepare Video
+        if (videoElement && videoSource) {
+            videoElement.classList.remove('hidden');
+            cardElement.classList.add('hidden');
+            videoSource.src = `assets/videos/${letter}.mp4`;
+            videoElement.load();
+        }
+    } else if (mode === 'card') {
+        // Prepare Card
+        if (cardElement && videoElement) {
+            cardElement.classList.remove('hidden');
+            videoElement.classList.add('hidden');
+            cardElement.src = `assets/cards/${letter}.png`;
+        }
+    }
+    
+    // Update Page Title for Browser Tab
+    document.title = `${letter.toUpperCase()} | OBLIQUE ALPHABET`;
+});
+
+// 2. CONTROLS: Sound Toggle
 function toggleSound() {
     const video = document.getElementById('letterVideo');
     const btn = document.getElementById('soundToggle');
-    
-    if (video) {
-        if (video.muted) {
-            video.muted = false;
-            btn.innerText = 'SOUND OFF';
-        } else {
-            video.muted = true;
-            btn.innerText = 'SOUND ON';
-        }
+    if (!video) return;
+
+    if (video.muted) {
+        video.muted = false;
+        btn.innerText = "SOUND OFF";
+    } else {
+        video.muted = true;
+        btn.innerText = "SOUND ON";
     }
 }
 
-/**
- * Resets the video to the beginning and plays it.
- * Supports the "REPLAY THE VIDEO" button requirement.
- */
+// 3. CONTROLS: Replay
 function replayVideo() {
     const video = document.getElementById('letterVideo');
     if (video) {
@@ -54,21 +57,11 @@ function replayVideo() {
     }
 }
 
-// 3. HOMEPAGE GRID GENERATION
-document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('alphabet-container');
+// 4. NAVIGATION: Master Randomizer
+function getRandom(targetMode) {
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    const randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
     
-    // Only run this if we are on the index.html page
-    if (container) {
-        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-        
-        letters.forEach(letter => {
-            const link = document.createElement('a');
-            // Homepage always points to the videos subfolder
-            link.href = `assets/videos/${letter.toLowerCase()}.html`;
-            link.className = 'letter-link';
-            link.innerText = letter;
-            container.appendChild(link);
-        });
-    }
-});
+    // Redirects to the same template with new values
+    window.location.href = `template.html?letter=${randomLetter}&mode=${targetMode}`;
+}
