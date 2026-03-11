@@ -6,15 +6,17 @@
     <title>OBLIQUE ALPHABET</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* FONT PATH UPDATED TO NEUE MACHINA */
         @font-face {
-            font-family: 'NeueMachina';
-            src: url('fonts/NeueMachina-Regular.otf') format('opentype');
+            font-family: 'LEIXO';
+            src: url('fonts/LEIXO.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'NeueMachina-Bold';
+            src: url('fonts/NeueMachina-Bold.otf') format('opentype');
         }
 
         body {
             background-color: #1a1a1a;
-            font-family: 'NeueMachina', sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -22,6 +24,9 @@
             color: white;
             text-align: center;
         }
+
+        .main-header { padding: 60px 20px 0; }
+        .logo { font-family: 'LEIXO', sans-serif; font-size: 42px; text-transform: uppercase; letter-spacing: 2px; }
 
         .media-container {
             width: 100%;
@@ -31,117 +36,71 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            opacity: 0; /* Managed by script.js for smooth fade */
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.5s ease;
         }
 
-        .media-container video, 
-        .media-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+        .media-container video, .media-container img { width: 100%; height: auto; }
 
+        /* THE 2x2 GRID */
         .bottom-interface {
             display: grid;
             grid-template-columns: 1fr 1fr;
             column-gap: 15px;
-            row-gap: 20px;
+            row-gap: 15px;
             width: 100%;
-            max-width: 450px;
+            max-width: 500px; /* Slightly wider for the longer text */
             margin: 40px auto;
             padding: 0 20px;
         }
 
         .control-btn {
-            aspect-ratio: 2 / 1;
+            aspect-ratio: 2.2 / 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
             padding: 10px;
-            font-size: 11px;
+            font-family: 'NeueMachina-Bold', sans-serif;
+            font-size: 10px;
             text-transform: uppercase;
             cursor: pointer;
             border: 1px solid white;
             background: transparent;
             color: white;
-            font-family: 'NeueMachina', sans-serif;
             line-height: 1.2;
-            transition: background 0.2s ease, color 0.2s ease;
+            transition: all 0.2s ease;
         }
 
-        .control-btn:hover {
-            background-color: white;
-            color: black;
-        }
-
+        .control-btn:hover { background-color: white; color: black; }
         .hidden { display: none !important; }
 
-        .about-nav {
-            margin-top: 20px;
-            padding-bottom: 60px;
-        }
-
-        .back-link {
-            color: white;
-            text-decoration: underline;
-            font-size: 13px;
-            opacity: 0.6;
-            font-family: 'NeueMachina', sans-serif;
-        }
-
         @media (max-width: 450px) {
-            .control-btn { font-size: 9px; }
+            .control-btn { font-size: 8.5px; }
             .media-container { min-height: 300px; }
         }
     </style>
 </head>
-<body class="letter-page">
+<body>
 
-    <header class="main-header" style="padding-top: 60px;">
-        <h1 class="logo" style="font-size: 42px; text-transform: uppercase; letter-spacing: 2px;">OBLIQUE ALPHABET</h1>
+    <header class="main-header">
+        <h1 class="logo">OBLIQUE ALPHABET</h1>
     </header>
 
-    <main class="center-content">
+    <main>
         <div class="media-container">
             <video id="letterVideo" class="hidden" autoplay muted playsinline>
                 <source id="videoSource" src="" type="video/mp4">
             </video>
-            <img id="letterCard" class="hidden" src="" alt="Oblique Strategy Card">
+            <img id="letterCard" class="hidden" src="" alt="Strategy Card">
         </div>
 
         <div class="bottom-interface">
-            <button id="soundToggle" class="control-btn" onclick="toggleSound()">SOUND ON</button>
-            <button class="control-btn" onclick="getRandom('video')">ANOTHER RANDOM VIDEO</button>
-            <button id="replayBtn" class="control-btn" onclick="replayVideo()">REPLAY</button>
-            <button class="control-btn" onclick="getRandom('card')">PICK A RANDOM CARD</button>
+            <button id="btn-1" class="control-btn"></button>
+            <button id="btn-2" class="control-btn"></button>
+            <button id="btn-3" class="control-btn"></button>
+            <button id="btn-4" class="control-btn"></button>
         </div>
-        
-        <footer class="about-nav">
-            <a href="index.html" class="back-link">BACK TO THE ALPHABET</a>
-        </footer>
     </main>
 
     <script src="script.js"></script>
-
-    <script>
-        // Adjust button labels if we are in Card Mode
-        window.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(window.location.search);
-            const mode = params.get('mode') || 'video';
-            if (mode === 'card') {
-                const soundBtn = document.getElementById('soundToggle');
-                const replayBtn = document.getElementById('replayBtn');
-                
-                soundBtn.innerText = "---";
-                soundBtn.style.opacity = "0.3";
-                soundBtn.disabled = true;
-
-                replayBtn.innerText = "BACK TO START";
-                replayBtn.onclick = () => window.location.href = 'index.html';
-            }
-        });
-    </script>
 </body>
 </html>
