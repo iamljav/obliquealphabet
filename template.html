@@ -49,6 +49,7 @@
             justify-content: center;
             align-items: center;
             background-color: #1a1a1a;
+            min-height: 300px;
         }
 
         .media-container video, .media-container img {
@@ -79,6 +80,7 @@
             border: 1px solid white;
             background: transparent;
             color: white;
+            transition: all 0.2s ease;
         }
 
         .control-btn:hover { background-color: white; color: black; }
@@ -118,7 +120,6 @@
     </main>
 
     <script>
-        // INTERNAL SCRIPT FOR INTRO LOGIC
         const urlParams = new URLSearchParams(window.location.search);
         const letter = urlParams.get('letter') || 'a';
         const mode = urlParams.get('mode') || 'video';
@@ -137,61 +138,72 @@
         }
 
         function init() {
-            // Load Media
             if (letter === 'intro') {
                 video.classList.remove('hidden');
                 document.getElementById('videoSource').src = 'assets/videos/intro.mp4';
                 video.load();
                 setupIntroButtons();
             } else {
-                // Standard Alphabet Logic
                 if (mode === 'video') {
                     video.classList.remove('hidden');
+                    img.classList.add('hidden');
                     document.getElementById('videoSource').src = `assets/videos/${letter}.mp4`;
                     video.load();
                 } else {
                     img.classList.remove('hidden');
-                    img.src = `assets/cards/${letter}.jpg`;
+                    video.classList.add('hidden');
+                    img.src = `assets/cards/${letter}.png`;
                 }
                 setupStandardButtons();
             }
         }
 
         function setupIntroButtons() {
-            // Top Left: Sound
             btn1.innerText = "SOUND ON";
             btn1.onclick = () => {
                 video.muted = !video.muted;
                 btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF";
             };
 
-            // Top Right: Pick a Random Card
             btn2.innerText = "PICK A RANDOM CARD";
             btn2.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=card`; };
 
-            // Bottom Left: Pick a Random Video
             btn3.innerText = "PICK A RANDOM VIDEO";
             btn3.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=video`; };
 
-            // Bottom Right: Back to Alphabet
             btn4.innerText = "BACK TO ALPHABET";
             btn4.onclick = () => { window.location.href = "index.html"; };
         }
 
         function setupStandardButtons() {
-            // Your existing logic for A-Z buttons goes here
-            btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF";
-            btn1.onclick = () => { video.muted = !video.muted; btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF"; };
+            // Button 1: Sound Toggle (Hide if in card mode)
+            if (mode === 'video') {
+                btn1.classList.remove('hidden');
+                btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF";
+                btn1.onclick = () => { 
+                    video.muted = !video.muted; 
+                    btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF"; 
+                };
+            } else {
+                // If Card mode, maybe use this for "View Video Version" instead of Button 3?
+                // For now, let's keep it simple and hide it or repurpose it.
+                btn1.innerText = "SOUND N/A";
+                btn1.style.opacity = "0.3";
+                btn1.style.pointerEvents = "none";
+            }
             
-            btn2.innerText = "ANOTHER RANDOM VIDEO";
-            btn2.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=video`; };
+            // Button 2: Randomizer based on current mode
+            btn2.innerText = mode === 'video' ? "ANOTHER RANDOM VIDEO" : "ANOTHER RANDOM CARD";
+            btn2.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=${mode}`; };
 
+            // Button 3: Switch Mode (Video <-> Card)
             btn3.innerText = mode === 'video' ? "VIEW CARD VERSION" : "VIEW VIDEO VERSION";
             btn3.onclick = () => {
                 const newMode = mode === 'video' ? 'card' : 'video';
                 window.location.href = `template.html?letter=${letter}&mode=${newMode}`;
             };
 
+            // Button 4: Back
             btn4.innerText = "BACK TO ALPHABET";
             btn4.onclick = () => { window.location.href = "index.html"; };
         }
