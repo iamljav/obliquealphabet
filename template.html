@@ -55,7 +55,7 @@
             width: 100%;
             height: auto;
             max-height: 70vh;
-            object-fit: contain; /* FIX: SHOW FULL VIDEO */
+            object-fit: contain;
             display: block;
         }
 
@@ -117,6 +117,86 @@
         </div>
     </main>
 
-    <script src="script.js"></script>
+    <script>
+        // INTERNAL SCRIPT FOR INTRO LOGIC
+        const urlParams = new URLSearchParams(window.location.search);
+        const letter = urlParams.get('letter') || 'a';
+        const mode = urlParams.get('mode') || 'video';
+
+        const btn1 = document.getElementById('btn-1'); // Top Left
+        const btn2 = document.getElementById('btn-2'); // Top Right
+        const btn3 = document.getElementById('btn-3'); // Bottom Left
+        const btn4 = document.getElementById('btn-4'); // Bottom Right
+
+        const video = document.getElementById('letterVideo');
+        const img = document.getElementById('letterCard');
+
+        function getRandomLetter() {
+            const letters = "abcdefghijklmnopqrstuvwxyz";
+            return letters[Math.floor(Math.random() * letters.length)];
+        }
+
+        function init() {
+            // Load Media
+            if (letter === 'intro') {
+                video.classList.remove('hidden');
+                document.getElementById('videoSource').src = 'assets/videos/intro.mp4';
+                video.load();
+                setupIntroButtons();
+            } else {
+                // Standard Alphabet Logic
+                if (mode === 'video') {
+                    video.classList.remove('hidden');
+                    document.getElementById('videoSource').src = `assets/videos/${letter}.mp4`;
+                    video.load();
+                } else {
+                    img.classList.remove('hidden');
+                    img.src = `assets/cards/${letter}.jpg`;
+                }
+                setupStandardButtons();
+            }
+        }
+
+        function setupIntroButtons() {
+            // Top Left: Sound
+            btn1.innerText = "SOUND ON";
+            btn1.onclick = () => {
+                video.muted = !video.muted;
+                btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF";
+            };
+
+            // Top Right: Pick a Random Card
+            btn2.innerText = "PICK A RANDOM CARD";
+            btn2.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=card`; };
+
+            // Bottom Left: Pick a Random Video
+            btn3.innerText = "PICK A RANDOM VIDEO";
+            btn3.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=video`; };
+
+            // Bottom Right: Back to Alphabet
+            btn4.innerText = "BACK TO ALPHABET";
+            btn4.onclick = () => { window.location.href = "index.html"; };
+        }
+
+        function setupStandardButtons() {
+            // Your existing logic for A-Z buttons goes here
+            btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF";
+            btn1.onclick = () => { video.muted = !video.muted; btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF"; };
+            
+            btn2.innerText = "ANOTHER RANDOM VIDEO";
+            btn2.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=video`; };
+
+            btn3.innerText = mode === 'video' ? "VIEW CARD VERSION" : "VIEW VIDEO VERSION";
+            btn3.onclick = () => {
+                const newMode = mode === 'video' ? 'card' : 'video';
+                window.location.href = `template.html?letter=${letter}&mode=${newMode}`;
+            };
+
+            btn4.innerText = "BACK TO ALPHABET";
+            btn4.onclick = () => { window.location.href = "index.html"; };
+        }
+
+        window.onload = init;
+    </script>
 </body>
 </html>
