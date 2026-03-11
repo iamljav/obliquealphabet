@@ -1,8 +1,10 @@
+/* 1. GLOBAL FONT LOAD */
 @font-face {
-    font-family: 'NeueMachina';
-    src: url('fonts/NeueMachina-Regular.otf') format('opentype');
+    font-family: 'LEIXO';
+    src: url('fonts/LEIXO.ttf') format('truetype');
 }
 
+/* 2. BASE RESET */
 * {
     margin: 0;
     padding: 0;
@@ -10,34 +12,35 @@
 }
 
 body {
-    background-color: #1a1a1a;
+    background-color: #1a1a1a; /* Your signature dark grey/black */
     color: white;
-    font-family: 'NeueMachina', sans-serif;
+    font-family: 'LEIXO', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-.hidden { display: none !important; }
-
-.bottom-interface {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    width: 100%;
-    max-width: 450px;
-    margin: 40px auto;
+/* 3. GLOBAL UTILITIES */
+.hidden { 
+    display: none !important; 
 }
 
-.control-btn {
-    aspect-ratio: 2 / 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 10px;
-    font-family: 'NeueMachina', sans-serif;
-    font-size: 11px;
+/* Ensure links don't have default blue styling */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 4. BUTTON BASICS */
+/* This ensures any button using this class across the site looks consistent */
+.control-btn, .utility-btn {
+    font-family: 'LEIXO', sans-serif;
     text-transform: uppercase;
-    cursor: pointer;
-    border: 1px solid white;
-    background: transparent;
-    color: white;
+    transition: all 0.2s ease;
+}
+
+/* 5. MEDIA HANDLING */
+/* Prevents images/videos from breaking the layout on mobile */
+img, video {
+    max-width: 100%;
+    height: auto;
 }
