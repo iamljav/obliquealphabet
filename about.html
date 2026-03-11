@@ -40,10 +40,12 @@
             text-decoration: none;
         }
 
-        /* FIXED: Forces a specific width gap between OBLIQUE and ALPHABET */
+        /* UPDATED SPACE LOGO FIX */
         .logo span.space { 
-            display: inline-block;
-            width: 4vw; 
+            display: inline-flex;
+            width: 0.5em; 
+            min-width: 20px;
+            flex-shrink: 0;
         }
 
         .subtitle {
@@ -102,7 +104,7 @@
         @media (max-width: 600px) {
             .content-container p { font-size: 13px; }
             .content-container p.small-text { font-size: 8px !important; }
-            .logo span.space { width: 5vw; }
+            .logo span.space { min-width: 15px; }
         }
     </style>
 </head>
