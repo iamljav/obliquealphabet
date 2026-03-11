@@ -6,25 +6,58 @@
     <title>OBLIQUE ALPHABET | HOME</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Specific Grid Styling for the Home Page */
-        .grid-container {
+        /* 1. FONT SETUP - Matching your folder structure */
+        @font-face {
+            font-family: 'MSCHF';
+            src: url('fonts/MSCHF.otf') format('opentype');
+        }
+
+        body {
+            background-color: #1a1a1a;
+            font-family: 'MSCHF', sans-serif;
+            margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 60vh;
+            color: white;
+        }
+
+        /* 2. HEADER */
+        .main-header {
+            padding: 80px 20px 40px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 48px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin: 0;
+            line-height: 1;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* 3. THE GRID */
+        .grid-container {
+            width: 100%;
+            max-width: 450px;
             padding: 20px;
+            margin-top: 20px;
         }
 
         .alphabet-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr); /* 6 columns across */
+            grid-template-columns: repeat(6, 1fr); 
             gap: 12px;
-            width: 100%;
-            max-width: 450px;
-            margin: 0 auto;
         }
 
+        /* 4. THE WHITE BUTTONS */
         .letter-link {
             display: flex;
             align-items: center;
@@ -34,29 +67,45 @@
             color: black;
             text-decoration: none;
             font-size: 24px;
-            font-family: inherit; /* Uses your MSCHF font from style.css */
-            transition: transform 0.1s ease;
+            font-family: 'MSCHF', sans-serif;
+            transition: transform 0.1s ease, background-color 0.2s ease;
         }
 
         .letter-link:hover {
-            background-color: #f0f0f0;
+            background-color: #dddddd;
             transform: scale(1.05);
         }
 
-        @media (max-width: 400px) {
-            .alphabet-grid {
-                grid-template-columns: repeat(4, 1fr); /* 4 columns on small phones */
-            }
+        /* 5. FOOTER */
+        .main-footer {
+            margin-top: 60px;
+            padding-bottom: 60px;
+        }
+
+        .about-link {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid white;
+            font-size: 13px;
+            opacity: 0.6;
+        }
+
+        .about-link:hover {
+            opacity: 1;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 450px) {
+            .alphabet-grid { grid-template-columns: repeat(4, 1fr); }
+            .logo { font-size: 34px; }
         }
     </style>
 </head>
 <body class="home-page">
 
     <header class="main-header">
-        <div class="title-block">
-            <h1 class="logo">OBLIQUE ALPHABET</h1>
-            <p class="subtitle">an alphabet of control and creation</p>
-        </div>
+        <h1 class="logo">OBLIQUE ALPHABET</h1>
+        <p class="subtitle">an alphabet of control and creation</p>
     </header>
 
     <main class="grid-container">
@@ -64,11 +113,12 @@
             </nav>
     </main>
 
-    <footer class="main-footer" style="text-align: center; margin-top: 40px;">
+    <footer class="main-footer">
         <a href="about.html" class="about-link">ABOUT THE PROJECT</a>
     </footer>
 
     <script>
+        // This script creates the 26 links so you don't have to
         const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
         const grid = document.getElementById('alphabet-grid');
 
@@ -76,7 +126,7 @@
             const char = letter.toLowerCase();
             const link = document.createElement('a');
             
-            // Point to template with mode=video by default
+            // Points to the single template.html we created
             link.href = `template.html?letter=${char}&mode=video`;
             link.className = 'letter-link';
             link.innerHTML = `<span>${letter}</span>`;
