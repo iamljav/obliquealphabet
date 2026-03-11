@@ -50,7 +50,7 @@
         /* WIDER CONTAINER TO MATCH TITLE */
         .content-width {
             width: 100%;
-            max-width: 600px; /* Increased to align with the logo width */
+            max-width: 600px; 
             padding: 0 20px;
         }
 
@@ -67,7 +67,7 @@
             border: 1px solid white;
             color: white;
             padding: 15px 5px;
-            font-family: 'NeueMachina-Bold', sans-serif; /* Switched to Machina Bold */
+            font-family: 'NeueMachina-Bold', sans-serif;
             font-size: 10px;
             text-transform: uppercase;
             text-decoration: none;
@@ -99,7 +99,7 @@
             color: black;
             text-decoration: none;
             font-size: 24px;
-            font-family: 'LEIXO', sans-serif; /* Letters stay LEIXO */
+            font-family: 'LEIXO', sans-serif;
             transition: transform 0.1s ease;
         }
 
@@ -108,14 +108,31 @@
             transform: scale(1.05);
         }
 
+        /* FOOTER LINK */
         .main-footer {
             margin-top: 60px;
-            padding-bottom: 60px;
+            padding-bottom: 80px;
+        }
+
+        .about-link {
+            font-family: 'NeueMachina-Bold', sans-serif;
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 2px;
+            transition: border-color 0.2s ease;
+        }
+
+        .about-link:hover {
+            border-bottom-color: white;
         }
 
         @media (max-width: 600px) {
             .logo { font-size: 38px; }
             .alphabet-grid { grid-template-columns: repeat(4, 1fr); }
+            .utility-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -123,7 +140,7 @@
 
     <header class="main-header">
         <h1 class="logo">OBLIQUE ALPHABET</h1>
-        <p class="subtitle">an alphabet of control and resistance</p>
+        <p class="subtitle">an alphabet of control and creation</p>
     </header>
 
     <div class="content-width">
@@ -136,9 +153,11 @@
         <main class="grid-container">
             <nav id="alphabet-grid" class="alphabet-grid"></nav>
         </main>
-    </div>
 
-    <footer class="main-footer"></footer>
+        <footer class="main-footer">
+            <a href="about.html" class="about-link">ABOUT THE PROJECT</a>
+        </footer>
+    </div>
 
     <script src="script.js"></script>
     <script>
