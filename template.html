@@ -25,7 +25,7 @@
             box-sizing: border-box;
         }
 
-        .main-header { padding-top: 60px; }
+        .main-header { padding-top: 20px; }
 
         .logo { margin: 0; width: 100%; }
         .logo a {
@@ -95,13 +95,13 @@
         .hidden { display: none !important; }
 
         @media (max-width: 600px) {
-            .main-header, .bottom-interface, .media-container { padding: 0 15px; padding-top: 60px; }
+            .main-header, .bottom-interface, .media-container { padding: 0 15px; }
+            .main-header { padding-top: 20px; }
             .bottom-interface.three-buttons { flex-direction: column; }
         }
     </style>
 </head>
 <body>
-
     <header class="main-header">
         <h1 class="logo">
             <a href="index.html">
@@ -130,13 +130,11 @@
         const urlParams = new URLSearchParams(window.location.search);
         const letter = urlParams.get('letter') || 'a';
         const mode = urlParams.get('mode') || 'video';
-
         const controls = document.getElementById('controls');
         const btn1 = document.getElementById('btn-1');
         const btn2 = document.getElementById('btn-2');
         const btn3 = document.getElementById('btn-3');
         const btn4 = document.getElementById('btn-4');
-
         const video = document.getElementById('letterVideo');
         const img = document.getElementById('letterCard');
 
@@ -170,10 +168,7 @@
 
         function setupIntroButtons() {
             btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF";
-            btn1.onclick = () => {
-                video.muted = !video.muted;
-                btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF";
-            };
+            btn1.onclick = () => { video.muted = !video.muted; btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF"; };
             btn2.innerText = "PICK A RANDOM CARD";
             btn2.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=card`; };
             btn3.innerText = "PICK A RANDOM VIDEO";
@@ -186,10 +181,7 @@
             if (mode === 'video') {
                 btn1.classList.remove('hidden');
                 btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF";
-                btn1.onclick = () => { 
-                    video.muted = !video.muted; 
-                    btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF"; 
-                };
+                btn1.onclick = () => { video.muted = !video.muted; btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF"; };
                 btn2.innerText = "ANOTHER RANDOM VIDEO";
                 btn2.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=video`; };
                 btn3.innerText = "VIEW CARD VERSION";
@@ -206,7 +198,6 @@
                 btn4.onclick = () => { window.location.href = "index.html"; };
             }
         }
-
         window.onload = init;
     </script>
 </body>
