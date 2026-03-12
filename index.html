@@ -26,7 +26,6 @@
             box-sizing: border-box;
         }
 
-        /* REVERTED TO INTERFACE PADDING: 20px for tight bezel feel */
         .main-header { padding-top: 20px; padding-bottom: 20px; }
 
         .logo { margin: 0; width: 100%; }
@@ -49,6 +48,9 @@
             opacity: 0.8;
             margin-top: 25px;
             letter-spacing: 2px;
+            /* SYNCED FIX: Prevents wrapping and matches About page */
+            white-space: nowrap;
+            display: inline-block;
         }
 
         .utility-row {
@@ -111,6 +113,8 @@
             .main-header { padding-top: 20px; }
             .alphabet-grid { grid-template-columns: repeat(4, 1fr); }
             .utility-row { grid-template-columns: 1fr; }
+            /* SYNCED FIX: Ensures subtitle fits bezel-to-bezel on small mobile */
+            .subtitle { font-size: clamp(9px, 2.5vw, 12px); }
         }
     </style>
 </head>
