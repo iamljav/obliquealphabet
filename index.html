@@ -26,8 +26,8 @@
             box-sizing: border-box;
         }
 
-        /* Standardized Header Padding */
-        .main-header { padding-top: 60px; padding-bottom: 20px; }
+        /* REVERTED TO INTERFACE PADDING: 20px for tight bezel feel */
+        .main-header { padding-top: 20px; padding-bottom: 20px; }
 
         .logo { margin: 0; width: 100%; }
         .logo a {
@@ -108,7 +108,7 @@
 
         @media (max-width: 600px) {
             .main-header, .content-width { padding: 0 15px; }
-            .main-header { padding-top: 60px; }
+            .main-header { padding-top: 20px; }
             .alphabet-grid { grid-template-columns: repeat(4, 1fr); }
             .utility-row { grid-template-columns: 1fr; }
         }
@@ -140,13 +140,11 @@
     </div>
 
     <script>
-        // Use DOMContentLoaded to ensure the element exists before the script runs
         document.addEventListener('DOMContentLoaded', () => {
             const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
             const grid = document.getElementById('alphabet-grid');
-
             if (grid) {
-                grid.innerHTML = ''; // Clear any existing content
+                grid.innerHTML = '';
                 alphabet.forEach(letter => {
                     const char = letter.toLowerCase();
                     const link = document.createElement('a');
