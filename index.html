@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OBLIQUEALPHABET | HOME</title>
+    <title>OBLIQUEALPHABET</title>
     <link rel="stylesheet" href="style.css">
     <style>
         @font-face { font-family: 'LEIXO'; src: url('fonts/LEIXO.ttf') format('truetype'); }
@@ -19,14 +19,13 @@
             text-align: center;
         }
 
-        .main-header, .content-width {
+        .main-header, .media-container, .bottom-interface {
             width: 100%;
             max-width: 600px;
-            padding: 0;
             box-sizing: border-box;
         }
 
-        .main-header { padding-top: 80px; padding-bottom: 20px; }
+        .main-header { padding-top: 60px; }
 
         .logo { margin: 0; width: 100%; }
         .logo a {
@@ -43,74 +42,63 @@
 
         /* The space span CSS is no longer needed but won't interfere */
 
-        .subtitle {
-            font-family: 'NeueMachina-Bold', sans-serif;
-            font-size: 12px;
-            text-transform: uppercase;
-            opacity: 0.8;
-            margin-top: 25px;
-            letter-spacing: 2px;
+        .media-container {
+            margin: 40px auto 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1a1a1a;
+            min-height: 300px;
         }
 
-        .utility-row {
+        .media-container video, .media-container img {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+            display: block;
+        }
+
+        .bottom-interface {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr 1fr;
             gap: 12px;
-            margin: 40px 0 20px;
+            margin: 40px auto 80px;
         }
 
-        .utility-btn {
-            background-color: transparent;
-            border: 1px solid white;
-            color: white;
-            padding: 15px 5px;
+        .bottom-interface.three-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .bottom-interface.three-buttons .control-btn {
+            flex: 1;
+            aspect-ratio: auto;
+            height: 50px;
+        }
+
+        .control-btn {
+            aspect-ratio: 3 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
             font-family: 'NeueMachina-Bold', sans-serif;
             font-size: 10px;
             text-transform: uppercase;
-            text-decoration: none;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border: 1px solid white;
+            background: transparent;
+            color: white;
             transition: all 0.2s ease;
         }
 
-        .utility-btn:hover { background-color: white; color: black; }
-
-        .alphabet-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr); 
-            gap: 12px;
-            width: 100%;
-        }
-
-        .letter-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            aspect-ratio: 1 / 1;
-            background-color: white;
-            color: black;
-            text-decoration: none;
-            font-size: 24px;
-            font-family: 'LEIXO', sans-serif;
-        }
-
-        .main-footer { margin-top: 60px; padding-bottom: 80px; }
-        .about-link {
-            font-family: 'NeueMachina-Bold', sans-serif;
-            color: white;
-            text-decoration: none;
-            font-size: 12px;
-            text-transform: uppercase;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-            padding-bottom: 2px;
-        }
+        .control-btn:hover { background-color: white; color: black; }
+        .hidden { display: none !important; }
 
         @media (max-width: 600px) {
-            .main-header, .content-width { padding: 0 15px; }
-            .alphabet-grid { grid-template-columns: repeat(4, 1fr); }
-            .utility-row { grid-template-columns: 1fr; }
+            .main-header, .bottom-interface, .media-container { padding: 0 15px; }
+            .bottom-interface.three-buttons { flex-direction: column; }
         }
     </style>
 </head>
@@ -122,35 +110,106 @@
                 <span>O</span><span>B</span><span>L</span><span>I</span><span>Q</span><span>U</span><span>E</span><span>A</span><span>L</span><span>P</span><span>H</span><span>A</span><span>B</span><span>E</span><span>T</span>
             </a>
         </h1>
-        <p class="subtitle">an alphabet of control and resistance</p>
     </header>
 
-    <div class="content-width">
-        <nav class="utility-row">
-            <a href="template.html?letter=intro&mode=video" class="utility-btn">WATCH THE INTRODUCTION</a>
-            <button class="utility-btn" onclick="window.location.href='template.html?letter=' + String.fromCharCode(97 + Math.floor(Math.random() * 26)) + '&mode=video'">PICK A RANDOM VIDEO</button>
-            <button class="utility-btn" onclick="window.location.href='template.html?letter=' + String.fromCharCode(97 + Math.floor(Math.random() * 26)) + '&mode=card'">PICK A RANDOM CARD</button>
-        </nav>
+    <main>
+        <div class="media-container">
+            <video id="letterVideo" class="hidden" autoplay muted playsinline loop>
+                <source id="videoSource" src="" type="video/mp4">
+            </video>
+            <img id="letterCard" class="hidden" src="" alt="Strategy Card">
+        </div>
 
-        <main id="alphabet-grid" class="alphabet-grid"></main>
-
-        <footer class="main-footer">
-            <a href="about.html" class="about-link">ABOUT THE ALPHABET</a>
-        </footer>
-    </div>
+        <div id="controls" class="bottom-interface">
+            <button id="btn-1" class="control-btn"></button>
+            <button id="btn-2" class="control-btn"></button>
+            <button id="btn-3" class="control-btn"></button>
+            <button id="btn-4" class="control-btn"></button>
+        </div>
+    </main>
 
     <script>
-        const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-        const grid = document.getElementById('alphabet-grid');
+        const urlParams = new URLSearchParams(window.location.search);
+        const letter = urlParams.get('letter') || 'a';
+        const mode = urlParams.get('mode') || 'video';
 
-        alphabet.forEach(letter => {
-            const char = letter.toLowerCase();
-            const link = document.createElement('a');
-            link.href = `template.html?letter=${char}&mode=video`;
-            link.className = 'letter-link';
-            link.innerHTML = `<span>${letter}</span>`;
-            grid.appendChild(link);
-        });
+        const controls = document.getElementById('controls');
+        const btn1 = document.getElementById('btn-1');
+        const btn2 = document.getElementById('btn-2');
+        const btn3 = document.getElementById('btn-3');
+        const btn4 = document.getElementById('btn-4');
+
+        const video = document.getElementById('letterVideo');
+        const img = document.getElementById('letterCard');
+
+        function getRandomLetter() {
+            const letters = "abcdefghijklmnopqrstuvwxyz";
+            return letters[Math.floor(Math.random() * letters.length)];
+        }
+
+        function init() {
+            if (letter === 'intro') {
+                video.classList.remove('hidden');
+                document.getElementById('videoSource').src = 'assets/videos/intro.mp4';
+                video.load();
+                setupIntroButtons();
+            } else {
+                if (mode === 'video') {
+                    video.classList.remove('hidden');
+                    img.classList.add('hidden');
+                    document.getElementById('videoSource').src = `assets/videos/${letter}.mp4`;
+                    video.load();
+                    controls.classList.remove('three-buttons');
+                } else {
+                    img.classList.remove('hidden');
+                    video.classList.add('hidden');
+                    img.src = `assets/cards/${letter}.png`;
+                    controls.classList.add('three-buttons');
+                }
+                setupStandardButtons();
+            }
+        }
+
+        function setupIntroButtons() {
+            btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF";
+            btn1.onclick = () => {
+                video.muted = !video.muted;
+                btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF";
+            };
+            btn2.innerText = "PICK A RANDOM CARD";
+            btn2.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=card`; };
+            btn3.innerText = "PICK A RANDOM VIDEO";
+            btn3.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=video`; };
+            btn4.innerText = "BACK TO ALPHABET";
+            btn4.onclick = () => { window.location.href = "index.html"; };
+        }
+
+        function setupStandardButtons() {
+            if (mode === 'video') {
+                btn1.classList.remove('hidden');
+                btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF";
+                btn1.onclick = () => { 
+                    video.muted = !video.muted; 
+                    btn1.innerText = video.muted ? "SOUND ON" : "SOUND OFF"; 
+                };
+                btn2.innerText = "ANOTHER RANDOM VIDEO";
+                btn2.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=video`; };
+                btn3.innerText = "VIEW CARD VERSION";
+                btn3.onclick = () => { window.location.href = `template.html?letter=${letter}&mode=card`; };
+                btn4.innerText = "BACK TO ALPHABET";
+                btn4.onclick = () => { window.location.href = "index.html"; };
+            } else {
+                btn1.classList.add('hidden');
+                btn2.innerText = "ANOTHER RANDOM CARD";
+                btn2.onclick = () => { window.location.href = `template.html?letter=${getRandomLetter()}&mode=card`; };
+                btn3.innerText = "VIEW VIDEO VERSION";
+                btn3.onclick = () => { window.location.href = `template.html?letter=${letter}&mode=video`; };
+                btn4.innerText = "BACK TO ALPHABET";
+                btn4.onclick = () => { window.location.href = "index.html"; };
+            }
+        }
+
+        window.onload = init;
     </script>
 </body>
 </html>
