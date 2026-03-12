@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABOUT | OBLIQUEALPHABET</title>
+    <title>OBLIQUEALPHABET</title>
+    
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <meta property="og:title" content="OBLIQUEALPHABET">
+    <meta name="twitter:title" content="OBLIQUEALPHABET">
+
     <link rel="stylesheet" href="style.css">
     <style>
         @font-face { font-family: 'LEIXO'; src: url('fonts/LEIXO.ttf') format('truetype'); }
@@ -48,8 +54,7 @@
             opacity: 0.8;
             margin-top: 15px;
             letter-spacing: 2px;
-            /* FIX: Ensures the subtitle never wraps to a second line */
-            white-space: nowrap; 
+            white-space: nowrap;
             display: inline-block;
         }
 
@@ -102,7 +107,6 @@
             .main-header { padding-top: 20px; padding-left: 15px; padding-right: 15px; }
             .content-container p { font-size: 13px; }
             .content-container p.small-text { font-size: 8px !important; }
-            /* Scales down the subtitle font size slightly on very small screens to prevent clipping */
             .subtitle { font-size: clamp(9px, 2.5vw, 12px); }
         }
     </style>
