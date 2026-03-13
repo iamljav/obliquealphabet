@@ -8,7 +8,6 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
 
     <meta name="description" content="Inspired by Gilles Deleuze and Brian Eno, OBLIQUE ALPHABET is an AI generated alphabet of control and resistance designed to reclaim cultural agency.">
-    
     <meta property="og:title" content="OBLIQUEALPHABET">
     <meta property="og:description" content="Inspired by Gilles Deleuze and Brian Eno, OBLIQUE ALPHABET is an AI generated alphabet of control and resistance designed to reclaim cultural agency.">
     <meta property="og:image" content="assets/favicon.png">
@@ -43,7 +42,6 @@
         }
 
         .logo { margin: 0; width: 100%; }
-        
         .logo a {
             font-family: 'LEIXO', sans-serif;
             font-size: clamp(24px, 8.5vw, 54px);
@@ -90,7 +88,6 @@
         a { color: white; text-decoration: underline; transition: opacity 0.2s ease; }
         a:hover { opacity: 0.6; }
 
-        /* UPDATED: Added text-align: center for this specific block */
         .content-container p.small-text {
             font-family: 'NeueMachina-Bold', sans-serif;
             font-size: 11px !important;
@@ -99,7 +96,13 @@
             margin-top: 80px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            text-align: center; 
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        .content-container p.small-text span {
+            display: block;
+            margin-bottom: 4px;
         }
 
         .footer-nav { margin-top: 60px; padding-bottom: 80px; }
@@ -115,7 +118,10 @@
         @media (max-width: 600px) {
             .main-header { padding-top: 20px; padding-left: 15px; padding-right: 15px; }
             .content-container p { font-size: 13px; }
-            .content-container p.small-text { font-size: 10px !important; }
+            .content-container p.small-text { 
+                font-size: 10px !important; 
+                letter-spacing: 0.2px;
+            }
             .subtitle { font-size: clamp(9px, 2.5vw, 12px); }
         }
     </style>
@@ -142,8 +148,8 @@
         <p>Use it to produce your own differences.</p>
         
         <p class="small-text">
-            <strong>OBLIQUEALPHABET — AN ALPHABET OF CONTROL AND RESISTANCE:</strong><br>
-            AN IDEA BY <a href="https://www.instagram.com/iamljav/" target="_blank"><strong>LJAV</strong></a> EXECUTED THROUGH DIFFERENT GEN AI PLATFORMS.
+            <span>OBLIQUEALPHABET — AN ALPHABET OF CONTROL AND RESISTANCE:</span>
+            <span>AN IDEA BY <a href="https://www.instagram.com/iamljav/" target="_blank"><strong>LJAV</strong></a> EXECUTED THROUGH DIFFERENT GEN AI PLATFORMS.</span>
         </p>
     </main>
 
