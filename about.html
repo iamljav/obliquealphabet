@@ -13,11 +13,6 @@
     <meta property="og:image" content="assets/favicon.png">
     <meta property="og:type" content="website">
 
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="OBLIQUEALPHABET">
-    <meta name="twitter:description" content="Inspired by Gilles Deleuze and Brian Eno, OBLIQUE ALPHABET is an AI generated alphabet of control and resistance designed to reclaim cultural agency.">
-    <meta name="twitter:image" content="assets/favicon.png">
-
     <link rel="stylesheet" href="style.css">
     <style>
         @font-face { font-family: 'LEIXO'; src: url('fonts/LEIXO.ttf') format('truetype'); }
@@ -88,10 +83,11 @@
         a { color: white; text-decoration: underline; transition: opacity 0.2s ease; }
         a:hover { opacity: 0.6; }
 
+        /* THE STACKED COLOPHON */
         .content-container p.small-text {
             font-family: 'NeueMachina-Bold', sans-serif;
             font-size: 11px !important;
-            line-height: 1.6;
+            line-height: 1.8;
             opacity: 0.5 !important;
             margin-top: 80px;
             letter-spacing: 0.5px;
@@ -101,8 +97,9 @@
         }
 
         .content-container p.small-text span {
-            display: block;
-            margin-bottom: 4px;
+            display: block; /* Forces each span onto a new line */
+            width: 100%;
+            margin-bottom: 2px;
         }
 
         .footer-nav { margin-top: 60px; padding-bottom: 80px; }
@@ -120,7 +117,7 @@
             .content-container p { font-size: 13px; }
             .content-container p.small-text { 
                 font-size: 10px !important; 
-                letter-spacing: 0.2px;
+                letter-spacing: 0.3px;
             }
             .subtitle { font-size: clamp(9px, 2.5vw, 12px); }
         }
@@ -148,8 +145,9 @@
         <p>Use it to produce your own differences.</p>
         
         <p class="small-text">
-            <span>OBLIQUEALPHABET — AN ALPHABET OF CONTROL AND RESISTANCE:</span>
-            <span>AN IDEA BY <a href="https://www.instagram.com/iamljav/" target="_blank"><strong>LJAV</strong></a> EXECUTED THROUGH DIFFERENT GEN AI PLATFORMS.</span>
+            <span><strong>OBLIQUEALPHABET</strong></span>
+            <span>AN ALPHABET OF CONTROL AND RESISTANCE</span>
+            <span>AN IDEA BY <a href="https://www.instagram.com/iamljav/" target="_blank"><strong>LJAV</strong></a> EXECUTED THROUGH DIFFERENT GEN AI PLATFORMS</span>
         </p>
     </main>
 
